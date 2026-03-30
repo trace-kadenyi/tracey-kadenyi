@@ -50,7 +50,7 @@ export default function ParticleCanvas() {
       color: 0xff3b3f,
       size: 0.018,
       transparent: true,
-      opacity: 0.5,
+      opacity: 0.3,
       sizeAttenuation: true,
     });
 
