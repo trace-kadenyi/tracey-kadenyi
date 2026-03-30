@@ -1,26 +1,114 @@
-@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Cabinet+Grotesk:wght@400;500;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-display: "Cabinet Grotesk", sans-serif;
+  --font-sans: "Syne", sans-serif;
+  --font-mono: "DM Mono", monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #050708;
+    color: #eef2ee;
+    font-family: var(--font-sans);
+    cursor: none; /* hidden in favour of custom cursor */
+  }
+
+  /* Restore cursor for mobile */
+  @media (pointer: coarse) {
+    body {
+      cursor: auto;
+    }
+  }
+
+  ::selection {
+    background: rgba(0, 229, 122, 0.25);
+    color: #00e57a;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #050708;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 229, 122, 0.25);
+    border-radius: 2px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 229, 122, 0.5);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  /* Emerald glow text */
+  .text-glow {
+    text-shadow: 0 0 30px rgba(0, 229, 122, 0.5);
+  }
+
+  /* Emerald border glow */
+  .border-glow {
+    box-shadow:
+      0 0 0 1px rgba(0, 229, 122, 0.25),
+      0 0 20px rgba(0, 229, 122, 0.1);
+  }
+
+  /* Frosted glass nav */
+  .glass {
+    background: rgba(5, 7, 8, 0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  /* Noise texture overlay */
+  .noise::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.03;
+  }
+
+  /* Section fade-up animation delay utilities */
+  .delay-100 {
+    animation-delay: 100ms;
+  }
+  .delay-200 {
+    animation-delay: 200ms;
+  }
+  .delay-300 {
+    animation-delay: 300ms;
+  }
+  .delay-400 {
+    animation-delay: 400ms;
+  }
+  .delay-500 {
+    animation-delay: 500ms;
+  }
+  .delay-700 {
+    animation-delay: 700ms;
+  }
+
+  /* Hidden until animated */
+  .anim-hidden {
+    opacity: 0;
+  }
 }
