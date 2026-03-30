@@ -16,7 +16,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col items-start justify-center overflow-hidden"
+      className="relative min-h-screen flex flex-col items-start justify-center overflow-hidden m-0 p-0"
     >
       <ParticleCanvas />
 
@@ -24,11 +24,10 @@ export default function Hero() {
         className="absolute left-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
         style={{
           background:
-            "radial-gradient(circle, rgba(0,229,122,0.07) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(255,59,63,0.05) 0%, transparent 70%)",
           zIndex: 1,
         }}
       />
-
       <div
         className="relative max-w-6xl mx-auto px-6 w-full pt-24"
         style={{ zIndex: 2 }}
