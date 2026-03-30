@@ -11,26 +11,31 @@ const config: Config = {
     extend: {
       colors: {
         base: {
-          DEFAULT: "#050708",
-          surface: "#0f1318",
-          elevated: "#161c22",
-          highlight: "#1c242c",
+          DEFAULT: "#ffffff",
+          surface: "#f5f5f5",
+          elevated: "#eeeeee",
+          highlight: "#e5e5e5",
+        },
+        navy: {
+          DEFAULT: "#0f1626",
+          soft: "#1a2540",
+          muted: "#2d3d5a",
         },
         em: {
-          DEFAULT: "#00a8ff",
-          deep: "#0090e0",
-          dim: "#00a8ff1a",
-          glow: "#00a8ff40",
+          DEFAULT: "#ff3b3f",
+          deep: "#e02e32",
+          dim: "#ff3b3f1a",
+          glow: "#ff3b3f40",
         },
         ink: {
-          DEFAULT: "#eef2ee",
-          muted: "#7a8f7e",
-          faint: "#3a4a3e",
+          DEFAULT: "#0f1626",
+          muted: "#4a5568",
+          faint: "#9aa5b4",
         },
         edge: {
-          DEFAULT: "rgba(0,168,255,0.12)",
-          strong: "rgba(0,168,255,0.25)",
-          bright: "rgba(0,168,255,0.45)",
+          DEFAULT: "rgba(15,22,38,0.1)",
+          strong: "rgba(15,22,38,0.2)",
+          bright: "rgba(255,59,63,0.4)",
         },
       },
       fontFamily: {
@@ -39,8 +44,10 @@ const config: Config = {
         display: ["var(--font-display)", "sans-serif"],
       },
       backgroundImage: {
-        "em-radial": "radial-gradient(circle at 50% 50%, #00a8ff15, transparent 70%)",
-        "em-subtle": "radial-gradient(circle at 80% 20%, #00a8ff08, transparent 50%)",
+        "em-radial":
+          "radial-gradient(circle at 50% 50%, #ff3b3f15, transparent 70%)",
+        "em-subtle":
+          "radial-gradient(circle at 80% 20%, #ff3b3f08, transparent 50%)",
       },
       animation: {
         "fade-up": "fadeUp 0.6s ease forwards",
@@ -73,9 +80,10 @@ const config: Config = {
         },
       },
       boxShadow: {
-        em: "0 0 40px rgba(0,168,255,0.15)",
-        "em-lg": "0 0 80px rgba(0,168,255,0.2)",
-        "em-sm": "0 0 20px rgba(0,168,255,0.1)",
+        em: "0 0 40px rgba(255,59,63,0.15)",
+        "em-lg": "0 0 80px rgba(255,59,63,0.2)",
+        "em-sm": "0 0 20px rgba(255,59,63,0.1)",
+        card: "0 2px 20px rgba(15,22,38,0.08)",
       },
       transitionTimingFunction: {
         spring: "cubic-bezier(0.16, 1, 0.3, 1)",
