@@ -67,7 +67,6 @@ export default function RootLayout({
                   borderRadius: "50%",
                   pointerEvents: "none",
                   zIndex: 99999,
-                  transition: "transform 0.05s linear",
                   mixBlendMode: "difference",
                 }}
               />
@@ -85,7 +84,7 @@ export default function RootLayout({
                   borderRadius: "50%",
                   pointerEvents: "none",
                   zIndex: 9998,
-                  transition: "transform 0.15s ease-out",
+                  transition: "transform 0.12s ease-out",
                 }}
               />
             </>
