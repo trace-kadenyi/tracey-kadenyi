@@ -31,7 +31,7 @@ export default function RootLayout({
   }, []);
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning style={{ margin: 0, padding: 0 }}>
       <head>
         <title>Tracey Kadenyi — Full-Stack Developer</title>
         <meta
@@ -45,7 +45,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
       </head>
-      <body className="noise">
+      <body className="noise" style={{ margin: 0, padding: 0 }}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -61,9 +61,9 @@ export default function RootLayout({
                   position: "fixed",
                   top: 0,
                   left: 0,
-                  width: 8,
-                  height: 8,
-                  background: "#00e57a",
+                  width: 12,
+                  height: 12,
+                  background: "#ff3b3f",
                   borderRadius: "50%",
                   pointerEvents: "none",
                   zIndex: 99999,
@@ -81,7 +81,7 @@ export default function RootLayout({
                   width: 400,
                   height: 400,
                   background:
-                    "radial-gradient(circle, rgba(0,229,122,0.06) 0%, transparent 70%)",
+                    "radial-gradient(circle, rgba(255,59,63,0.05) 0%, transparent 70%)",
                   borderRadius: "50%",
                   pointerEvents: "none",
                   zIndex: 9998,
