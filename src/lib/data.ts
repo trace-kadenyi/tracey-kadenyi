@@ -125,6 +125,11 @@ export const socials = [
     url: "https://medium.com/@tracekadenyi",
     handle: "@tracekadenyi",
   },
+  {
+    label: "Email",
+    url: "mailto:treykadenyi@gmail.com",
+    handle: "treykadenyi@gmail.com",
+  },
 ];
 
 // ─── META ───────────────────────────────────────────────────────────────────
@@ -132,11 +137,11 @@ export const socials = [
 export const meta = {
   name: "Tracey Kadenyi",
   shortName: "TK",
-  title: "Full-Stack Web Developer",
-  location: "Nairobi, Kenya",
+  title: "Software Developer",
+  status: "JavaScript/TypeScript",
   email: "treykadenyi@gmail.com",
   resumeUrl:
     "https://docs.google.com/document/d/1bzoeJz-HpSqfjInOUQuz1AT2de0feeBd_JN4oA8CPNM/edit?usp=sharing",
   mediumUrl: "https://medium.com/@tracekadenyi",
-  bio: "MERN stack engineer with a love for clean architecture, creative UIs, and solving real problems. I build things that matter.",
+  bio: "JavaScript/TypeScript dev with 4+ years building SaaS platforms and scalable web apps. I specialize in the MERN stack with strong expertise in multi-tenant architecture, RBAC, and RESTful API design.",
 };
