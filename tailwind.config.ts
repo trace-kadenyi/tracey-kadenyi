@@ -10,31 +10,27 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Base backgrounds
         base: {
           DEFAULT: "#050708",
           surface: "#0f1318",
           elevated: "#161c22",
           highlight: "#1c242c",
         },
-        // Emerald accent
         em: {
-          DEFAULT: "#00e57a",
-          deep: "#00b85f",
-          dim: "#00e57a1a",
-          glow: "#00e57a40",
+          DEFAULT: "#00a8ff",
+          deep: "#0090e0",
+          dim: "#00a8ff1a",
+          glow: "#00a8ff40",
         },
-        // Text
         ink: {
           DEFAULT: "#eef2ee",
           muted: "#7a8f7e",
           faint: "#3a4a3e",
         },
-        // Borders
         edge: {
-          DEFAULT: "rgba(0,229,122,0.12)",
-          strong: "rgba(0,229,122,0.25)",
-          bright: "rgba(0,229,122,0.45)",
+          DEFAULT: "rgba(0,168,255,0.12)",
+          strong: "rgba(0,168,255,0.25)",
+          bright: "rgba(0,168,255,0.45)",
         },
       },
       fontFamily: {
@@ -43,10 +39,8 @@ const config: Config = {
         display: ["var(--font-display)", "sans-serif"],
       },
       backgroundImage: {
-        "em-radial":
-          "radial-gradient(circle at 50% 50%, #00e57a15, transparent 70%)",
-        "em-subtle":
-          "radial-gradient(circle at 80% 20%, #00e57a08, transparent 50%)",
+        "em-radial": "radial-gradient(circle at 50% 50%, #00a8ff15, transparent 70%)",
+        "em-subtle": "radial-gradient(circle at 80% 20%, #00a8ff08, transparent 50%)",
       },
       animation: {
         "fade-up": "fadeUp 0.6s ease forwards",
@@ -79,9 +73,9 @@ const config: Config = {
         },
       },
       boxShadow: {
-        em: "0 0 40px rgba(0,229,122,0.15)",
-        "em-lg": "0 0 80px rgba(0,229,122,0.2)",
-        "em-sm": "0 0 20px rgba(0,229,122,0.1)",
+        em: "0 0 40px rgba(0,168,255,0.15)",
+        "em-lg": "0 0 80px rgba(0,168,255,0.2)",
+        "em-sm": "0 0 20px rgba(0,168,255,0.1)",
       },
       transitionTimingFunction: {
         spring: "cubic-bezier(0.16, 1, 0.3, 1)",
