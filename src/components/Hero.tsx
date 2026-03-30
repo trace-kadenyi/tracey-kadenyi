@@ -9,61 +9,108 @@ const ParticleCanvas = dynamic(() => import("./ParticleCanvas"), {
 });
 
 export default function Hero() {
-  const scrollToAbout = () => {
-    document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col items-start justify-center overflow-hidden m-0 p-0"
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-white"
     >
       <ParticleCanvas />
 
       <div
-        className="absolute left-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
+        className="relative z-10"
         style={{
-          background:
-            "radial-gradient(circle, rgba(255,59,63,0.05) 0%, transparent 70%)",
-          zIndex: 1,
+          maxWidth: "680px",
+          paddingLeft: "8%",
+          paddingRight: "5%",
+          paddingTop: "96px",
+          paddingBottom: "80px",
         }}
-      />
-      <div
-        className="relative max-w-6xl mx-auto px-6 w-full pt-24"
-        style={{ zIndex: 2 }}
       >
         {/* Eyebrow */}
-        <div className="flex items-center gap-3 mb-6 animate-fade-in">
-          <span className="block w-8 h-px bg-em" />
-          <span className="font-mono text-em text-xs tracking-[0.2em] uppercase">
-            {meta.title} · {meta.location}
+        <div
+          className="flex items-center gap-3"
+          style={{ marginBottom: "28px" }}
+        >
+          <span
+            style={{
+              display: "block",
+              width: "24px",
+              height: "1px",
+              background: "#ff3b3f",
+              flexShrink: 0,
+            }}
+          />
+          <span
+            style={{
+              fontFamily: "var(--font-mono)",
+              color: "#ff3b3f",
+              fontSize: "11px",
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+            }}
+          >
+            {meta.title} · {meta.status}
           </span>
         </div>
 
         {/* Headline */}
         <h1
-          className="font-display font-black text-ink leading-[1.05] mb-6 animate-fade-up"
-          style={{ fontSize: "clamp(3rem, 8vw, 7rem)" }}
+          style={{
+            fontFamily: "var(--font-display)",
+            fontWeight: 900,
+            color: "#0f1626",
+            fontSize: "clamp(2rem, 3vw, 2.8rem)",
+            lineHeight: 1.2,
+            marginBottom: "20px",
+          }}
         >
-          I build things
-          <br />
-          that <span className="text-em text-glow italic">actually work.</span>
+          Tracey Kadenyi — full-stack engineer.
         </h1>
 
-        {/* Subheading */}
-        <p className="text-ink-muted text-lg max-w-xl leading-relaxed mb-10 animate-fade-up delay-200 anim-hidden">
+        {/* Bio */}
+        <p
+          style={{
+            fontFamily: "var(--font-sans)",
+            color: "#4a5568",
+            fontSize: "1rem",
+            lineHeight: 1.75,
+            maxWidth: "520px",
+            marginBottom: "36px",
+          }}
+        >
           {meta.bio}
         </p>
 
         {/* CTAs */}
-        <div className="flex flex-wrap items-center gap-4 mb-16 animate-fade-up delay-300 anim-hidden">
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            alignItems: "center",
+            gap: "12px",
+            marginBottom: "36px",
+          }}
+        >
           <button
             onClick={() =>
               document
                 .getElementById("projects")
                 ?.scrollIntoView({ behavior: "smooth" })
             }
-            className="px-7 py-3.5 bg-em text-base font-display font-bold text-sm tracking-wide rounded-lg hover:bg-em-deep transition-colors duration-200"
+            style={{
+              padding: "12px 28px",
+              background: "#ff3b3f",
+              color: "#ffffff",
+              fontFamily: "var(--font-display)",
+              fontWeight: 700,
+              fontSize: "14px",
+              letterSpacing: "0.04em",
+              borderRadius: "8px",
+              border: "none",
+              cursor: "pointer",
+            }}
+            onMouseOver={(e) => (e.currentTarget.style.background = "#e02e32")}
+            onMouseOut={(e) => (e.currentTarget.style.background = "#ff3b3f")}
           >
             View my work
           </button>
@@ -71,22 +118,40 @@ export default function Hero() {
             href={meta.resumeUrl}
             target="_blank"
             rel="noreferrer"
-            className="flex items-center gap-2 px-7 py-3.5 border border-edge-strong text-ink-muted hover:text-em hover:border-em text-sm font-sans tracking-wide rounded-lg transition-all duration-200"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              padding: "11px 28px",
+              border: "1px solid rgba(15,22,38,0.2)",
+              color: "#4a5568",
+              fontFamily: "var(--font-sans)",
+              fontSize: "14px",
+              letterSpacing: "0.04em",
+              borderRadius: "8px",
+              textDecoration: "none",
+            }}
           >
-            <Download size={14} />
+            <Download size={13} />
             Download CV
           </a>
         </div>
 
         {/* Social links */}
-        <div className="flex items-center gap-6 animate-fade-up delay-400 anim-hidden">
+        <div style={{ display: "flex", alignItems: "center", gap: "28px" }}>
           {socials.map((s) => (
             <a
               key={s.label}
               href={s.url}
               target="_blank"
               rel="noreferrer"
-              className="font-mono text-xs text-ink-faint hover:text-em transition-colors duration-200 tracking-wide"
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: "12px",
+                color: "#9aa5b4",
+                textDecoration: "none",
+                letterSpacing: "0.08em",
+              }}
             >
               {s.label}
             </a>
@@ -95,15 +160,32 @@ export default function Hero() {
       </div>
 
       {/* Scroll indicator */}
-      <button
-        onClick={scrollToAbout}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-ink-faint hover:text-em transition-colors duration-300 animate-fade-in delay-700"
+      <div
+        style={{
+          position: "absolute",
+          bottom: "32px",
+          left: "50%",
+          transform: "translateX(-50%)",
+          zIndex: 10,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "6px",
+          color: "#9aa5b4",
+        }}
       >
-        <span className="font-mono text-[10px] tracking-[0.2em] uppercase">
+        <span
+          style={{
+            fontFamily: "var(--font-mono)",
+            fontSize: "10px",
+            letterSpacing: "0.2em",
+            textTransform: "uppercase",
+          }}
+        >
           Scroll
         </span>
-        <ArrowDown size={14} className="animate-bounce" />
-      </button>
+        <ArrowDown size={13} />
+      </div>
     </section>
   );
 }
