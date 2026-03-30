@@ -35,10 +35,10 @@
     }
   }
 
-  ::selection {
-    background: rgba(0, 229, 122, 0.25);
-    color: #00e57a;
-  }
+ ::selection {
+  background: rgba(0, 168, 255, 0.25);
+  color: #00a8ff;
+}
 
   /* Scrollbar */
   ::-webkit-scrollbar {
@@ -47,27 +47,26 @@
   ::-webkit-scrollbar-track {
     background: #050708;
   }
-  ::-webkit-scrollbar-thumb {
-    background: rgba(0, 229, 122, 0.25);
-    border-radius: 2px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 229, 122, 0.5);
-  }
+ ::-webkit-scrollbar-thumb {
+  background: rgba(0, 168, 255, 0.25);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 168, 255, 0.5);
+}
 }
 
 @layer utilities {
   /* Emerald glow text */
   .text-glow {
-    text-shadow: 0 0 30px rgba(0, 229, 122, 0.5);
-  }
+  text-shadow: 0 0 30px rgba(0, 168, 255, 0.5);
+}
 
-  /* Emerald border glow */
-  .border-glow {
-    box-shadow:
-      0 0 0 1px rgba(0, 229, 122, 0.25),
-      0 0 20px rgba(0, 229, 122, 0.1);
-  }
+.border-glow {
+  box-shadow:
+    0 0 0 1px rgba(0, 168, 255, 0.25),
+    0 0 20px rgba(0, 168, 255, 0.1);
+}
 
   /* Frosted glass nav */
   .glass {
