@@ -23,16 +23,15 @@ export default function ImageSlideshow({ images, visible }: Props) {
 
   return (
     <div
-      style={{ position: "relative", width: "100%", height: "100%" }}
+      className="relative w-full h-full"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
       {images.map((src, i) => (
         <div
           key={src}
+          className="absolute inset-0"
           style={{
-            position: "absolute",
-            inset: 0,
             opacity: i === current ? 1 : 0,
             transition: "opacity 0.8s ease",
           }}
@@ -40,69 +39,39 @@ export default function ImageSlideshow({ images, visible }: Props) {
           <img
             src={src}
             alt={`screenshot ${i + 1}`}
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              objectPosition: "top",
-              display: "block",
-            }}
+            className="w-full h-full object-cover object-top block"
           />
         </div>
       ))}
 
+      {/* Gradient overlay */}
       <div
+        className="absolute inset-0 pointer-events-none"
         style={{
-          position: "absolute",
-          inset: 0,
           background:
             "linear-gradient(to top, rgba(15,22,38,0.5) 0%, transparent 50%)",
-          pointerEvents: "none",
         }}
       />
 
-      <div
-        style={{
-          position: "absolute",
-          bottom: "14px",
-          left: "50%",
-          transform: "translateX(-50%)",
-          display: "flex",
-          gap: "6px",
-          zIndex: 2,
-        }}
-      >
+      {/* Dots */}
+      <div className="absolute bottom-[14px] left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
         {images.map((_, i) => (
           <button
             key={i}
             onClick={() => setCurrent(i)}
+            className="h-[6px] rounded-[3px] border-none cursor-pointer p-0"
             style={{
               width: i === current ? "20px" : "6px",
-              height: "6px",
-              borderRadius: "3px",
               background: i === current ? "#ff3b3f" : "rgba(255,255,255,0.4)",
-              border: "none",
-              cursor: "pointer",
-              padding: 0,
               transition: "all 0.3s ease",
             }}
           />
         ))}
       </div>
 
+      {/* Paused indicator */}
       {paused && (
-        <div
-          style={{
-            position: "absolute",
-            top: "12px",
-            right: "12px",
-            fontFamily: "var(--font-mono)",
-            fontSize: "9px",
-            color: "rgba(255,255,255,0.4)",
-            letterSpacing: "0.1em",
-            textTransform: "uppercase",
-          }}
-        >
+        <div className="absolute top-3 right-3 font-mono text-[9px] tracking-[0.1em] uppercase text-white/40">
           paused
         </div>
       )}
