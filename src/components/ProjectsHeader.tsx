@@ -20,81 +20,41 @@ export default function ProjectsHeader() {
   return (
     <div
       ref={ref}
-      style={{
-        background: "#ffffff",
-        padding: "120px 6% 80px",
-        position: "relative",
-        overflow: "hidden",
-      }}
+      className="bg-white relative overflow-hidden px-[6%] pt-[120px] pb-[80px]"
     >
+      {/* Background WORK text */}
       <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-display font-black whitespace-nowrap select-none pointer-events-none tracking-[-0.04em]"
         style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          fontFamily: "var(--font-display)",
-          fontWeight: 900,
           fontSize: "clamp(8rem, 18vw, 18rem)",
           color: "rgba(15,22,38,0.03)",
-          whiteSpace: "nowrap",
-          userSelect: "none",
-          pointerEvents: "none",
-          letterSpacing: "-0.04em",
         }}
       >
         WORK
       </div>
 
-      <div style={{ position: "relative", zIndex: 1, textAlign: "center" }}>
+      {/* Content */}
+      <div className="relative z-10 text-center">
+        {/* Eyebrow */}
         <div
+          className="flex items-center justify-center gap-3 mb-5"
           style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "12px",
-            marginBottom: "20px",
             opacity: visible ? 1 : 0,
             transition: "opacity 0.8s ease",
           }}
         >
-          <span
-            style={{
-              display: "block",
-              width: "32px",
-              height: "1px",
-              background: "#ff3b3f",
-            }}
-          />
-          <span
-            style={{
-              fontFamily: "var(--font-mono)",
-              color: "#ff3b3f",
-              fontSize: "11px",
-              letterSpacing: "0.2em",
-              textTransform: "uppercase",
-            }}
-          >
+          <span className="block w-8 h-px bg-[#ff3b3f]" />
+          <span className="font-mono text-[#ff3b3f] text-[11px] tracking-[0.2em] uppercase">
             Selected work
           </span>
-          <span
-            style={{
-              display: "block",
-              width: "32px",
-              height: "1px",
-              background: "#ff3b3f",
-            }}
-          />
+          <span className="block w-8 h-px bg-[#ff3b3f]" />
         </div>
 
+        {/* Title */}
         <h2
+          className="font-display font-black leading-none tracking-[-0.03em] text-[#0f1626]"
           style={{
-            fontFamily: "var(--font-display)",
-            fontWeight: 900,
-            color: "#0f1626",
             fontSize: "clamp(3rem, 7vw, 6rem)",
-            lineHeight: 1,
-            letterSpacing: "-0.03em",
             opacity: visible ? 1 : 0,
             transform: visible
               ? "translateY(0) scale(1)"
@@ -106,12 +66,10 @@ export default function ProjectsHeader() {
           Projects
         </h2>
 
+        {/* Subtext */}
         <p
+          className="font-sans text-[#4a5568] text-base mt-4"
           style={{
-            fontFamily: "var(--font-sans)",
-            color: "#4a5568",
-            fontSize: "1rem",
-            marginTop: "16px",
             opacity: visible ? 1 : 0,
             transition: "opacity 0.8s ease 0.3s",
           }}
