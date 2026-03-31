@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, useState, useCallback } from "react";
 import { projects } from "@/lib/data";
-import { ExternalLink, Code2, ChevronLeft, ChevronRight } from "lucide-react";
+import { ExternalLink, Code2 } from "lucide-react";
 
 function ImageSlideshow({
   images,
