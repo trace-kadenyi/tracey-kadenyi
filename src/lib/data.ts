@@ -75,7 +75,7 @@ export const projects = [
 export const skillGroups = [
   {
     label: "Languages",
-    skills: ["JavaScript", "TypeScript", "Python", "Ruby", "HTML", "CSS"],
+    skills: ["JavaScript", "TypeScript", "HTML", "CSS"],
   },
   {
     label: "Frontend",
@@ -90,7 +90,7 @@ export const skillGroups = [
   },
   {
     label: "Backend",
-    skills: ["Node.js", "Express", "Ruby on Rails", "REST APIs"],
+    skills: ["Node.js", "Express", "REST APIs"],
   },
   {
     label: "Databases",
@@ -103,14 +103,13 @@ export const skillGroups = [
 ];
 
 export const featuredSkills = [
-  { name: "React / Next.js", level: 92 },
-  { name: "Node.js / Express", level: 85 },
-  { name: "MongoDB", level: 80 },
+  { name: "JavaScript", level: 98 },
+  { name: "React", level: 92 },
+  { name: "Node.js / Express", level: 90 },
+  { name: "MongoDB", level: 85 },
   { name: "TypeScript", level: 74 },
-  { name: "Python", level: 65 },
-  { name: "Ruby on Rails", level: 68 },
+  { name: "Next.js", level: 62 },
 ];
-
 // ─── TESTIMONIALS ──────────────────────────────────────────────────────────
 
 export const testimonials = [
@@ -181,7 +180,7 @@ export const socials = [
 export const meta = {
   name: "Tracey Kadenyi",
   shortName: "TK",
-  title: "Full-Stack Developer",
+  title: "Full-Stack Software Developer",
   status: "Open to Opportunities",
   email: "treykadenyi@gmail.com",
   resumeUrl:
