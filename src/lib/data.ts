@@ -181,7 +181,7 @@ export const socials = [
 export const meta = {
   name: "Tracey Kadenyi",
   shortName: "TK",
-  title: "Software Developer",
+  title: "Full-Stack Developer",
   status: "Open to Opportunities",
   email: "treykadenyi@gmail.com",
   resumeUrl:
