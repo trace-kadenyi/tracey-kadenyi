@@ -58,32 +58,17 @@ function ProjectScene({
       ref={sectionRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      style={{
-        position: "relative",
-        minHeight: "100vh",
-        background: bg,
-        display: "flex",
-        alignItems: "center",
-        overflow: "hidden",
-        padding: "80px 6%",
-      }}
+      className="relative min-h-screen flex items-center overflow-hidden px-[6%] py-20"
+      style={{ background: bg }}
     >
       {/* Giant background number */}
       <div
+        className="absolute top-1/2 -translate-y-1/2 font-display font-black leading-none select-none pointer-events-none tracking-[-0.05em]"
         style={{
-          position: "absolute",
-          top: "50%",
           left: isEven ? "-1%" : "auto",
           right: isEven ? "auto" : "-1%",
-          transform: "translateY(-50%)",
-          fontFamily: "var(--font-display)",
-          fontWeight: 900,
           fontSize: "clamp(14rem, 25vw, 26rem)",
           color: isEven ? "rgba(255,59,63,0.05)" : "rgba(15,22,38,0.04)",
-          lineHeight: 1,
-          userSelect: "none",
-          pointerEvents: "none",
-          letterSpacing: "-0.05em",
         }}
       >
         0{index + 1}
@@ -91,31 +76,18 @@ function ProjectScene({
 
       {/* Mouse glow */}
       <div
+        className="absolute inset-0 pointer-events-none"
         style={{
-          position: "absolute",
-          inset: 0,
           background: `radial-gradient(circle at ${glowPos.x}% ${glowPos.y}%, rgba(255,59,63,0.07) 0%, transparent 55%)`,
-          pointerEvents: "none",
           transition: "background 0.2s ease",
         }}
       />
 
       {/* Grid */}
-      <div
-        style={{
-          position: "relative",
-          zIndex: 2,
-          width: "100%",
-          maxWidth: "1200px",
-          margin: "0 auto",
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "72px",
-          alignItems: "center",
-        }}
-      >
+      <div className="relative z-10 w-full max-w-[1200px] mx-auto grid grid-cols-2 gap-[72px] items-center">
         {/* Text */}
         <div
+          className="flex flex-col"
           style={{
             order: isEven ? 1 : 2,
             opacity: visible ? 1 : 0,
@@ -127,45 +99,19 @@ function ProjectScene({
           }}
         >
           {/* Eyebrow */}
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "10px",
-              marginBottom: "20px",
-            }}
-          >
-            <span
-              style={{
-                display: "block",
-                width: "20px",
-                height: "1px",
-                background: "#ff3b3f",
-              }}
-            />
-            <span
-              style={{
-                fontFamily: "var(--font-mono)",
-                color: "#ff3b3f",
-                fontSize: "11px",
-                letterSpacing: "0.18em",
-                textTransform: "uppercase",
-              }}
-            >
+          <div className="flex items-center gap-[10px] mb-5">
+            <span className="block w-5 h-px bg-[#ff3b3f] shrink-0" />
+            <span className="font-mono text-[#ff3b3f] text-[11px] tracking-[0.18em] uppercase">
               {project.tagline}
             </span>
           </div>
 
           {/* Title */}
           <h2
+            className="font-display font-black leading-none mb-5 tracking-[-0.03em]"
             style={{
-              fontFamily: "var(--font-display)",
-              fontWeight: 900,
               color: fg,
               fontSize: "clamp(2.8rem, 5vw, 4.5rem)",
-              lineHeight: 1,
-              marginBottom: "20px",
-              letterSpacing: "-0.03em",
             }}
           >
             {project.title}
@@ -173,79 +119,42 @@ function ProjectScene({
 
           {/* Description */}
           <p
-            style={{
-              fontFamily: "var(--font-sans)",
-              color: fgMuted,
-              fontSize: "0.95rem",
-              lineHeight: 1.75,
-              marginBottom: "24px",
-              maxWidth: "400px",
-            }}
+            className="font-sans text-[0.95rem] leading-[1.75] mb-6 max-w-[400px]"
+            style={{ color: fgMuted }}
           >
             {project.description}
           </p>
 
           {/* Highlights */}
-          <ul
-            style={{
-              listStyle: "none",
-              padding: 0,
-              margin: "0 0 28px 0",
-              display: "flex",
-              flexDirection: "column",
-              gap: "8px",
-            }}
-          >
+          <ul className="list-none p-0 flex flex-col gap-2 mb-7">
             {project.highlights.map((h, i) => (
               <li
                 key={i}
+                className="font-sans text-[0.85rem] px-3 py-2 rounded-md flex items-start gap-[10px]"
                 style={{
-                  fontFamily: "var(--font-sans)",
-                  fontSize: "0.85rem",
                   color: fgMuted,
-                  padding: "8px 12px",
                   background: highlightBg,
                   border: `1px solid ${highlightBorder}`,
-                  borderRadius: "6px",
-                  display: "flex",
-                  alignItems: "flex-start",
-                  gap: "10px",
                   opacity: visible ? 1 : 0,
                   transform: visible ? "translateX(0)" : "translateX(-20px)",
                   transition: `opacity 0.6s ease ${0.3 + i * 0.1}s, transform 0.6s ease ${0.3 + i * 0.1}s`,
                 }}
               >
-                <span
-                  style={{ color: "#ff3b3f", flexShrink: 0, marginTop: "1px" }}
-                >
-                  →
-                </span>
+                <span className="text-[#ff3b3f] shrink-0 mt-px">→</span>
                 {h}
               </li>
             ))}
           </ul>
 
           {/* Tags */}
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: "6px",
-              marginBottom: "32px",
-            }}
-          >
+          <div className="flex flex-wrap gap-1.5 mb-8">
             {project.tags.map((tag) => (
               <span
                 key={tag}
+                className="font-mono text-[10px] px-2.5 py-1 rounded text-[#ff3b3f] tracking-[0.05em]"
                 style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "10px",
-                  padding: "4px 10px",
-                  borderRadius: "4px",
                   background: "rgba(255,59,63,0.08)",
-                  color: "#ff3b3f",
                   border: "1px solid rgba(255,59,63,0.18)",
-                  letterSpacing: "0.05em",
                 }}
               >
                 {tag}
@@ -254,25 +163,12 @@ function ProjectScene({
           </div>
 
           {/* Links */}
-          <div style={{ display: "flex", gap: "12px" }}>
+          <div className="flex gap-3">
             <a
               href={project.liveUrl}
               target="_blank"
               rel="noreferrer"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "8px",
-                padding: "12px 28px",
-                background: "#ff3b3f",
-                color: "#ffffff",
-                fontFamily: "var(--font-display)",
-                fontWeight: 700,
-                fontSize: "13px",
-                borderRadius: "8px",
-                textDecoration: "none",
-                letterSpacing: "0.04em",
-              }}
+              className="flex items-center gap-2 px-7 py-3 bg-[#ff3b3f] text-white font-display font-bold text-[13px] rounded-lg no-underline tracking-[0.04em]"
             >
               <ExternalLink size={13} />
               Live site
@@ -281,19 +177,10 @@ function ProjectScene({
               href={project.sourceUrl}
               target="_blank"
               rel="noreferrer"
+              className="flex items-center gap-2 px-7 py-3 font-display font-bold text-[13px] rounded-lg no-underline tracking-[0.04em]"
               style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "8px",
-                padding: "12px 28px",
                 border: `1px solid ${isEven ? "rgba(255,255,255,0.2)" : "rgba(15,22,38,0.2)"}`,
                 color: fg,
-                fontFamily: "var(--font-display)",
-                fontWeight: 700,
-                fontSize: "13px",
-                borderRadius: "8px",
-                textDecoration: "none",
-                letterSpacing: "0.04em",
               }}
             >
               <Code2 size={13} />
@@ -304,9 +191,9 @@ function ProjectScene({
 
         {/* Slideshow card */}
         <div
+          className="perspective-[1000px]"
           style={{
             order: isEven ? 2 : 1,
-            perspective: "1000px",
             opacity: visible ? 1 : 0,
             transform: visible
               ? "translateY(0) scale(1)"
@@ -316,9 +203,8 @@ function ProjectScene({
           }}
         >
           <div
+            className="rounded-[20px] overflow-hidden h-[340px]"
             style={{
-              borderRadius: "20px",
-              overflow: "hidden",
               border: `1px solid ${borderCol}`,
               boxShadow: isEven
                 ? "0 32px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,59,63,0.1)"
@@ -326,7 +212,6 @@ function ProjectScene({
               transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
               transition: "transform 0.2s ease-out",
               transformStyle: "preserve-3d",
-              height: "340px",
             }}
           >
             <ImageSlideshow images={project.images} visible={visible} />
