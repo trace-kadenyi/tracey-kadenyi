@@ -16,101 +16,37 @@ export default function Hero() {
     >
       <ParticleCanvas />
 
-      <div
-        className="relative z-10"
-        style={{
-          maxWidth: "680px",
-          paddingLeft: "8%",
-          paddingRight: "5%",
-          paddingTop: "96px",
-          paddingBottom: "80px",
-        }}
-      >
+      <div className="relative z-10 max-w-[680px] pl-[8%] pr-[5%] pt-24 pb-20">
         {/* Eyebrow */}
-        <div
-          className="flex items-center gap-3"
-          style={{ marginBottom: "28px" }}
-        >
-          <span
-            style={{
-              display: "block",
-              width: "24px",
-              height: "1px",
-              background: "#ff3b3f",
-              flexShrink: 0,
-            }}
-          />
-          <span
-            style={{
-              fontFamily: "var(--font-mono)",
-              color: "#ff3b3f",
-              fontSize: "11px",
-              letterSpacing: "0.18em",
-              textTransform: "uppercase",
-            }}
-          >
-            Tracey Kadenyi . {meta.title}
+        <div className="flex items-center gap-3 mb-7">
+          <span className="block w-6 h-px bg-[#ff3b3f] shrink-0" />
+          <span className="font-mono text-[#ff3b3f] text-[11px] tracking-[0.18em] uppercase">
+            Tracey Kadenyi · {meta.title}
           </span>
         </div>
 
         {/* Headline */}
         <h1
-          style={{
-            fontFamily: "var(--font-display)",
-            fontWeight: 900,
-            color: "#0f1626",
-            fontSize: "clamp(2rem, 3vw, 2.8rem)",
-            lineHeight: 1.2,
-            marginBottom: "20px",
-          }}
+          className="font-display font-black text-[#0f1626] leading-[1.2] mb-5"
+          style={{ fontSize: "clamp(2rem, 3vw, 2.8rem)" }}
         >
           Tracey Kadenyi — full-stack engineer (change this).
         </h1>
 
         {/* Bio */}
-        <p
-          style={{
-            fontFamily: "var(--font-sans)",
-            color: "#4a5568",
-            fontSize: "1rem",
-            lineHeight: 1.75,
-            maxWidth: "520px",
-            marginBottom: "36px",
-          }}
-        >
+        <p className="font-sans text-[#4a5568] text-base leading-[1.75] max-w-[520px] mb-9">
           {meta.bio}
         </p>
 
         {/* CTAs */}
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            alignItems: "center",
-            gap: "12px",
-            marginBottom: "36px",
-          }}
-        >
+        <div className="flex flex-wrap items-center gap-3 mb-9">
           <button
             onClick={() =>
               document
                 .getElementById("projects")
                 ?.scrollIntoView({ behavior: "smooth" })
             }
-            style={{
-              padding: "12px 28px",
-              background: "#ff3b3f",
-              color: "#ffffff",
-              fontFamily: "var(--font-display)",
-              fontWeight: 700,
-              fontSize: "14px",
-              letterSpacing: "0.04em",
-              borderRadius: "8px",
-              border: "none",
-              cursor: "pointer",
-            }}
-            onMouseOver={(e) => (e.currentTarget.style.background = "#e02e32")}
-            onMouseOut={(e) => (e.currentTarget.style.background = "#ff3b3f")}
+            className="px-7 py-3 bg-[#ff3b3f] hover:bg-[#e02e32] text-white font-display font-bold text-sm tracking-[0.04em] rounded-lg border-none cursor-pointer transition-colors duration-200"
           >
             View my work
           </button>
@@ -118,19 +54,7 @@ export default function Hero() {
             href={meta.resumeUrl}
             target="_blank"
             rel="noreferrer"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-              padding: "11px 28px",
-              border: "1px solid rgba(15,22,38,0.2)",
-              color: "#4a5568",
-              fontFamily: "var(--font-sans)",
-              fontSize: "14px",
-              letterSpacing: "0.04em",
-              borderRadius: "8px",
-              textDecoration: "none",
-            }}
+            className="flex items-center gap-2 px-7 py-3 border border-[rgba(15,22,38,0.2)] text-[#4a5568] font-sans text-sm tracking-[0.04em] rounded-lg no-underline"
           >
             <Download size={13} />
             Download CV
@@ -138,20 +62,14 @@ export default function Hero() {
         </div>
 
         {/* Social links */}
-        <div style={{ display: "flex", alignItems: "center", gap: "28px" }}>
+        <div className="flex items-center gap-7">
           {socials.map((s) => (
             <a
               key={s.label}
               href={s.url}
               target="_blank"
               rel="noreferrer"
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: "12px",
-                color: "#9aa5b4",
-                textDecoration: "none",
-                letterSpacing: "0.08em",
-              }}
+              className="font-mono text-xs text-[#9aa5b4] no-underline tracking-[0.08em]"
             >
               {s.label}
             </a>
@@ -160,28 +78,8 @@ export default function Hero() {
       </div>
 
       {/* Scroll indicator */}
-      <div
-        style={{
-          position: "absolute",
-          bottom: "32px",
-          left: "50%",
-          transform: "translateX(-50%)",
-          zIndex: 10,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: "6px",
-          color: "#9aa5b4",
-        }}
-      >
-        <span
-          style={{
-            fontFamily: "var(--font-mono)",
-            fontSize: "10px",
-            letterSpacing: "0.2em",
-            textTransform: "uppercase",
-          }}
-        >
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5 text-[#9aa5b4]">
+        <span className="font-mono text-[10px] tracking-[0.2em] uppercase">
           Scroll
         </span>
         <ArrowDown size={13} />
