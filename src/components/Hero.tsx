@@ -49,7 +49,7 @@ export default function Hero() {
               textTransform: "uppercase",
             }}
           >
-            {meta.title} · {meta.status}
+            Tracey Kadenyi . {meta.title}
           </span>
         </div>
 
@@ -64,7 +64,7 @@ export default function Hero() {
             marginBottom: "20px",
           }}
         >
-          Tracey Kadenyi — full-stack engineer.
+          Tracey Kadenyi — full-stack engineer (change this).
         </h1>
 
         {/* Bio */}
