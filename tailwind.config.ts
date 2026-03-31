@@ -33,9 +33,9 @@ const config: Config = {
           faint: "#9aa5b4",
         },
         edge: {
-          DEFAULT: "rgba(15,22,38,0.1)",
-          strong: "rgba(15,22,38,0.2)",
-          bright: "rgba(255,59,63,0.4)",
+          DEFAULT: "#0f1626",
+          strong: "#0f1626",
+          bright: "#ff3b3f",
         },
       },
       fontFamily: {
