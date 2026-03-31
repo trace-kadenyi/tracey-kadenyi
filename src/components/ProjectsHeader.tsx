@@ -67,7 +67,7 @@ export default function ProjectsHeader() {
         </h2>
 
         {/* Subtext */}
-        <p
+        {/* <p
           className="font-sans text-[#4a5568] text-base mt-4"
           style={{
             opacity: visible ? 1 : 0,
@@ -75,7 +75,7 @@ export default function ProjectsHeader() {
           }}
         >
           Two real products. Shipped.
-        </p>
+        </p> */}
       </div>
     </div>
   );
