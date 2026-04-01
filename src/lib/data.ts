@@ -98,7 +98,7 @@ export const skillGroups = [
   },
   {
     label: "Tools",
-    skills: ["Git", "GitHub", "Vercel", "Netlify", "Postman", "VS Code"],
+    skills: ["Git", "GitHub", "Vercel", "Postman", "VS Code"],
   },
 ];
 
