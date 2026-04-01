@@ -148,12 +148,12 @@ export default function About() {
                   transition: "opacity 0.8s ease 0.4s",
                 }}
               >
-                <p className="font-sans text-[#4a5568] text-base leading-relaxed">
+                <span className="font-sans text-[#4a5568] text-base leading-relaxed">
                   Clean architecture, modular design, and maintainable code are
                   a personal standard. I build with scalability and reliability
                   in mind, from database schema to API design to frontend state
                   management.
-                </p>
+                </span>
               </p>
             </div>
 
