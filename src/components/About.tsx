@@ -86,7 +86,7 @@ export default function About() {
 
   const stats = [
     { value: "4+", label: "Years of experience" },
-    { value: "10+", label: "Collaborators across 5 countries" },
+    { value: "5K+", label: "GitHub contributions in the last year" },
     { value: "3", label: "Products in production" },
   ];
 
@@ -148,9 +148,12 @@ export default function About() {
                   transition: "opacity 0.8s ease 0.4s",
                 }}
               >
-                Full-stack JavaScript/TypeScript engineer with 4+ years building
-                SaaS platforms in remote, cross-functional teams. Specialising
-                in multi-tenant architecture, RBAC, and RESTful API design.
+                <p className="font-sans text-[#4a5568] text-base leading-relaxed">
+                  Clean architecture, modular design, and maintainable code are
+                  a personal standard. I build with scalability and reliability
+                  in mind, from database schema to API design to frontend state
+                  management.
+                </p>
               </p>
             </div>
 
