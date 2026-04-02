@@ -30,7 +30,10 @@ export default function Hero() {
           className="font-display font-black text-[#0f1626] leading-[1.2] mb-5"
           style={{ fontSize: "clamp(2rem, 3vw, 2.8rem)" }}
         >
-          I solve problems — one line of code at a time.
+          I solve problems <br />
+          <span className="text-[0.9em] tracking-tighter">
+            — one line of code at a time.
+          </span>
         </h1>
 
         {/* Bio */}
