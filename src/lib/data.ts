@@ -3,25 +3,69 @@
 export const projects = [
   {
     id: 1,
-    title: "MetriQ",
+    title: "PlaniT",
+    tagline: "B2B SaaS · Event Management Platform",
     description:
-      "An interactive web performance analysis platform for visualizing PageSpeed results, comparing competitors, and generating AI-powered insights.",
-    tags: ["MERN", "Tailwind", "AI", "Recharts"],
-    liveUrl: "https://metri-q.vercel.app/",
-    sourceUrl: "https://github.com/trace-kadenyi/MetriQ.git",
-    // Replace with your actual screenshot path in /public/images/
-    image: "/images/metriq.png",
+      "A multi-tenant SaaS platform for organizations to manage events, vendors, budgets, and teams — with real-time financial tracking, expense audit logs, and role-based access control built in.",
+    highlights: [
+      "Multi-tenant architecture with secure org-level data isolation",
+      "JWT auth with silent token renewal via Axios interceptors",
+      "Role-based UI — components render conditionally per user role",
+      "Live budget tracking with over-budget alerts and full audit logs",
+    ],
+    tags: [
+      "React",
+      "Redux Toolkit",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Tailwind",
+      "Supabase",
+    ],
+    liveUrl: "https://planit-hq.vercel.app/",
+    sourceUrl: "https://github.com/trace-kadenyi/PlaniT",
+    images: [
+      "/screenshots/planit/dashboard-dark.png",
+      "/screenshots/planit/eventsboard-dark.png",
+      "/screenshots/planit/taskboard-dark.png",
+      "/screenshots/planit/eventdetails-dark.png",
+      "/screenshots/planit/budget_&_expenses-dark.png",
+      "/screenshots/planit/expense_audit_log_dark.PNG",
+      "/screenshots/planit/userprofile-dark.png",
+      "/screenshots/planit/client-darkmode.png",
+      "/screenshots/planit/vendor-darkmode.png",
+    ],
     featured: true,
   },
   {
     id: 2,
-    title: "Imagine",
+    title: "MetriQ",
+    tagline: "Web Performance Analysis Platform",
     description:
-      "An interactive application for creatives — readers and writers. Users publish original stories and read stories by others.",
-    tags: ["MongoDB", "Express", "React", "Node.js"],
-    liveUrl: "https://imagine-tellmeastory.vercel.app/",
-    sourceUrl: "https://github.com/trace-kadenyi/storybrooke-frontend",
-    image: "/images/imagine.png",
+      "A performance analysis tool that audits any URL via Google PageSpeed Insights, generates AI-powered summaries, enables competitor comparison, and exports detailed PDF reports.",
+    highlights: [
+      "Google PageSpeed Insights integration — mobile & desktop audits",
+      "AI-generated performance summaries via OpenRouter + DeepSeek",
+      "Side-by-side competitor comparison with visual Recharts graphs",
+      "OAuth login via Google/GitHub, PDF export, dark/light mode",
+    ],
+    tags: [
+      "React",
+      "Node.js",
+      "Express",
+      "Recharts",
+      "Tailwind",
+      "AI",
+      "OAuth",
+    ],
+    liveUrl: "https://metri-q.vercel.app/",
+    sourceUrl: "https://github.com/trace-kadenyi/MetriQ",
+    images: [
+      "/screenshots/metriq/landingD.png",
+      "/screenshots/metriq/report.png",
+      "/screenshots/metriq/reportsD.png",
+      "/screenshots/metriq/competitorsD.png",
+    ],
     featured: true,
   },
 ];
@@ -31,7 +75,7 @@ export const projects = [
 export const skillGroups = [
   {
     label: "Languages",
-    skills: ["JavaScript", "TypeScript", "Python", "Ruby", "HTML", "CSS"],
+    skills: ["JavaScript", "TypeScript", "HTML", "CSS"],
   },
   {
     label: "Frontend",
@@ -46,7 +90,7 @@ export const skillGroups = [
   },
   {
     label: "Backend",
-    skills: ["Node.js", "Express", "Ruby on Rails", "REST APIs"],
+    skills: ["Node.js", "Express", "REST APIs"],
   },
   {
     label: "Databases",
@@ -54,19 +98,18 @@ export const skillGroups = [
   },
   {
     label: "Tools",
-    skills: ["Git", "GitHub", "Vercel", "Netlify", "Postman", "VS Code"],
+    skills: ["Git", "GitHub", "Vercel", "Postman", "VS Code"],
   },
 ];
 
 export const featuredSkills = [
-  { name: "React / Next.js", level: 92 },
-  { name: "Node.js / Express", level: 85 },
-  { name: "MongoDB", level: 80 },
+  { name: "JavaScript", level: 98 },
+  { name: "React", level: 92 },
+  { name: "Node.js / Express", level: 90 },
+  { name: "MongoDB", level: 85 },
   { name: "TypeScript", level: 74 },
-  { name: "Python", level: 65 },
-  { name: "Ruby on Rails", level: 68 },
+  { name: "Next.js", level: 62 },
 ];
-
 // ─── TESTIMONIALS ──────────────────────────────────────────────────────────
 
 export const testimonials = [
@@ -125,6 +168,11 @@ export const socials = [
     url: "https://medium.com/@tracekadenyi",
     handle: "@tracekadenyi",
   },
+  {
+    label: "Email",
+    url: "mailto:treykadenyi@gmail.com",
+    handle: "treykadenyi@gmail.com",
+  },
 ];
 
 // ─── META ───────────────────────────────────────────────────────────────────
@@ -132,11 +180,11 @@ export const socials = [
 export const meta = {
   name: "Tracey Kadenyi",
   shortName: "TK",
-  title: "Full-Stack Web Developer",
-  location: "Nairobi, Kenya",
+  title: "Full-Stack Software Developer",
+  status: "Open to Opportunities",
   email: "treykadenyi@gmail.com",
   resumeUrl:
     "https://docs.google.com/document/d/1bzoeJz-HpSqfjInOUQuz1AT2de0feeBd_JN4oA8CPNM/edit?usp=sharing",
   mediumUrl: "https://medium.com/@tracekadenyi",
-  bio: "MERN stack engineer with a love for clean architecture, creative UIs, and solving real problems. I build things that matter.",
+  bio: "JavaScript/TypeScript dev with 4+ years building SaaS platforms and scalable web apps | Strong expertise in multi-tenant architecture, Role-Based Access Control (RBAC), and RESTful API design.",
 };

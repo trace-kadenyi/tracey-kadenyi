@@ -10,7 +10,6 @@ export default function ParticleCanvas() {
     const mount = mountRef.current;
     if (!mount) return;
 
-    // ── Scene setup ──────────────────────────────────────────
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
       75,
@@ -20,16 +19,12 @@ export default function ParticleCanvas() {
     );
     camera.position.z = 3;
 
-    const renderer = new THREE.WebGLRenderer({
-      antialias: true,
-      alpha: true,
-    });
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(mount.clientWidth, mount.clientHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setClearColor(0x000000, 0);
     mount.appendChild(renderer.domElement);
 
-    // ── Particles ────────────────────────────────────────────
     const count = 1800;
     const positions = new Float32Array(count * 3);
     const velocities = new Float32Array(count * 3);
@@ -50,29 +45,29 @@ export default function ParticleCanvas() {
     geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
     geometry.setAttribute("size", new THREE.BufferAttribute(sizes, 1));
 
+    // Red-orange particles
     const material = new THREE.PointsMaterial({
-      color: 0x00a8ff,
-      size: 0.015,
+      color: 0xff3b3f,
+      size: 0.018,
       transparent: true,
-      opacity: 0.7,
+      opacity: 0.3,
       sizeAttenuation: true,
     });
 
     const particles = new THREE.Points(geometry, material);
     scene.add(particles);
 
-    // ── Connection lines ─────────────────────────────────────
     const lineGeometry = new THREE.BufferGeometry();
-    const linePositions = new Float32Array(count * count * 6);
+
+    // navy lines
     const lineMaterial = new THREE.LineBasicMaterial({
-      color: 0x00a8ff,
+      color: 0x0f1626,
       transparent: true,
-      opacity: 0.04,
+      opacity: 0.01,
     });
     const lines = new THREE.LineSegments(lineGeometry, lineMaterial);
     scene.add(lines);
 
-    // ── Mouse tracking ───────────────────────────────────────
     const mouse = new THREE.Vector2(9999, 9999);
     const handleMouseMove = (e: MouseEvent) => {
       mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
@@ -80,7 +75,6 @@ export default function ParticleCanvas() {
     };
     window.addEventListener("mousemove", handleMouseMove);
 
-    // ── Resize handler ───────────────────────────────────────
     const handleResize = () => {
       if (!mount) return;
       camera.aspect = mount.clientWidth / mount.clientHeight;
@@ -89,7 +83,6 @@ export default function ParticleCanvas() {
     };
     window.addEventListener("resize", handleResize);
 
-    // ── Animation loop ───────────────────────────────────────
     let frameId: number;
     const animate = () => {
       frameId = requestAnimationFrame(animate);
@@ -98,19 +91,16 @@ export default function ParticleCanvas() {
       const connectionPositions: number[] = [];
       const threshold = 1.2;
 
-      // Move particles + mouse repulsion
       for (let i = 0; i < count; i++) {
         const i3 = i * 3;
         pos[i3] += velocities[i3];
         pos[i3 + 1] += velocities[i3 + 1];
 
-        // Wrap edges
         if (pos[i3] > 5) pos[i3] = -5;
         if (pos[i3] < -5) pos[i3] = 5;
         if (pos[i3 + 1] > 5) pos[i3 + 1] = -5;
         if (pos[i3 + 1] < -5) pos[i3 + 1] = 5;
 
-        // Mouse influence
         const mx = mouse.x * 3;
         const my = mouse.y * 3;
         const dx = pos[i3] - mx;
@@ -123,8 +113,6 @@ export default function ParticleCanvas() {
         }
       }
 
-      // Draw connection lines between nearby particles
-      // Only check a subset each frame for performance
       for (let i = 0; i < count; i += 2) {
         const i3 = i * 3;
         for (let j = i + 1; j < count; j += 2) {
@@ -149,10 +137,8 @@ export default function ParticleCanvas() {
         "position",
         new THREE.Float32BufferAttribute(connectionPositions, 3),
       );
-
       geometry.attributes.position.needsUpdate = true;
 
-      // Slow rotation
       particles.rotation.z += 0.0003;
       lines.rotation.z += 0.0003;
 
@@ -160,7 +146,6 @@ export default function ParticleCanvas() {
     };
     animate();
 
-    // ── Cleanup ──────────────────────────────────────────────
     return () => {
       cancelAnimationFrame(frameId);
       window.removeEventListener("mousemove", handleMouseMove);

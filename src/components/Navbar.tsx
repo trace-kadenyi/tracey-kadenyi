@@ -5,7 +5,7 @@ import { useTheme } from "next-themes";
 import { Sun, Moon, Menu, X } from "lucide-react";
 import { meta } from "@/lib/data";
 
-const links = ["Home", "About", "Projects", "Blog", "Testimonials", "Contact"];
+const links = ["Home", "About", "Projects", "Blog", "Contact"];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
