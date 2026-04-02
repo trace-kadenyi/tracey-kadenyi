@@ -8,21 +8,7 @@ import {
   truncateTitle,
 } from "@/utils/text";
 import type { Post } from "@/types";
-
-function useVisible(ref: React.RefObject<HTMLDivElement | null>) {
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setVisible(true);
-      },
-      { threshold: 0.15 },
-    );
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, []);
-  return visible;
-}
+import { useVisible } from "@/hooks/useVisible";
 
 export default function Blog() {
   const [posts, setPosts] = useState<Post[]>([]);
