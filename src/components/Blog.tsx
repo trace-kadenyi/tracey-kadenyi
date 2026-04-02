@@ -6,7 +6,7 @@ import {
   getThumbnail,
   stripHtml,
   truncateTitle,
-} from "@/hooks/text";
+} from "@/utils/text";
 import type { Post } from "@/types";
 
 function useVisible(ref: React.RefObject<HTMLDivElement | null>) {
