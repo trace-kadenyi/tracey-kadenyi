@@ -11,3 +11,8 @@ export function formatDate(dateStr: string) {
     year: "numeric",
   });
 }
+
+// strip html helper func
+export function stripHtml(html: string) {
+  return html.replace(/<[^>]*>/g, "").slice(0, 140) + "...";
+}
