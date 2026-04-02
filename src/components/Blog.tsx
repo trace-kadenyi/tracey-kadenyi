@@ -1,5 +1,6 @@
 "use client";
 
+import { truncateTitle } from "@/hooks/text";
 import { useEffect, useState, useRef } from "react";
 
 interface Post {
@@ -179,7 +180,7 @@ export default function Blog() {
                           className="font-display font-black text-[#0f1626] leading-[1.15] mb-4 group-hover:text-[#ff3b3f] transition-colors duration-200"
                           style={{ fontSize: "clamp(1.2rem, 2vw, 1.6rem)" }}
                         >
-                          {featured.title}
+                          {truncateTitle(featured.title, 85)}
                         </h3>
                         <p className="font-sans text-[#4a5568] text-sm leading-relaxed">
                           {stripHtml(featured.description)}
@@ -247,7 +248,7 @@ export default function Blog() {
                             className="font-display font-black text-[#0f1626] leading-[1.2] mb-3 group-hover:text-[#ff3b3f] transition-colors duration-200"
                             style={{ fontSize: "1.1rem" }}
                           >
-                            {post.title}
+                            {truncateTitle(post.title, 55)}
                           </h3>
                           <p className="font-sans text-[#4a5568] text-sm leading-relaxed">
                             {stripHtml(post.description)}
