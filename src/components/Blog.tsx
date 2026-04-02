@@ -1,6 +1,6 @@
 "use client";
 
-import { formatDate, truncateTitle } from "@/hooks/text";
+import { formatDate, stripHtml, truncateTitle } from "@/hooks/text";
 import { useEffect, useState, useRef } from "react";
 
 interface Post {
@@ -25,10 +25,6 @@ function useVisible(ref: React.RefObject<HTMLDivElement | null>) {
     return () => obs.disconnect();
   }, []);
   return visible;
-}
-
-function stripHtml(html: string) {
-  return html.replace(/<[^>]*>/g, "").slice(0, 140) + "...";
 }
 
 function getThumbnail(item: Post) {
