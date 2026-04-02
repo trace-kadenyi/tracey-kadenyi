@@ -8,6 +8,7 @@ interface Post {
   pubDate: string;
   description: string;
   thumbnail: string;
+  content: string;
 }
 
 function useVisible(ref: React.RefObject<HTMLDivElement | null>) {
@@ -34,6 +35,15 @@ function formatDate(dateStr: string) {
 
 function stripHtml(html: string) {
   return html.replace(/<[^>]*>/g, "").slice(0, 140) + "...";
+}
+
+function getThumbnail(item: Post) {
+  // Try the thumbnail field first
+  if (item.thumbnail && item.thumbnail.startsWith("http"))
+    return item.thumbnail;
+  // Fall back to extracting first image from description
+  const match = item.description.match(/<img[^>]+src="([^">]+)"/);
+  return match ? match[1] : null;
 }
 
 export default function Blog() {
@@ -137,9 +147,9 @@ export default function Blog() {
                       className="relative overflow-hidden bg-[#0f1626]"
                       style={{ height: "280px" }}
                     >
-                      {featured.thumbnail ? (
+                      {getThumbnail(featured) ? (
                         <img
-                          src={featured.thumbnail}
+                          src={getThumbnail(featured)!}
                           alt={featured.title}
                           className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-500"
                         />
@@ -212,9 +222,9 @@ export default function Blog() {
                         className="relative overflow-hidden bg-[#0f1626]"
                         style={{ height: "160px" }}
                       >
-                        {post.thumbnail ? (
+                        {getThumbnail(post) ? (
                           <img
-                            src={post.thumbnail}
+                            src={getThumbnail(post)!}
                             alt={post.title}
                             className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-500"
                           />
