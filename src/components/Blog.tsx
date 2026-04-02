@@ -94,7 +94,7 @@ export default function Blog() {
                   href={featured.link}
                   target="_blank"
                   rel="noreferrer"
-                  className="group no-underline"
+                  className="group no-underline cursor-default"
                   style={{
                     opacity: visible ? 1 : 0,
                     transform: visible ? "translateY(0)" : "translateY(30px)",
@@ -109,13 +109,14 @@ export default function Blog() {
                     {/* Image */}
                     <div
                       className="relative overflow-hidden bg-[#0f1626]"
-                      style={{ height: "280px" }}
+                      style={{ height: "280px", willChange: "transform" }}
                     >
                       {getThumbnail(featured) ? (
                         <img
                           src={getThumbnail(featured)!}
                           alt={featured.title}
-                          className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-500"
+                          className="w-full h-full object-cover opacity-90 transition-transform duration-700 ease-out group-hover:scale-105"
+                          style={{ willChange: "transform" }}
                         />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center">
@@ -170,7 +171,7 @@ export default function Blog() {
                     href={post.link}
                     target="_blank"
                     rel="noreferrer"
-                    className="group no-underline"
+                    className="group no-underline cursor-default"
                     style={{
                       opacity: visible ? 1 : 0,
                       transform: visible ? "translateY(0)" : "translateY(30px)",
@@ -184,13 +185,14 @@ export default function Blog() {
                       {/* Thumbnail */}
                       <div
                         className="relative overflow-hidden bg-[#0f1626]"
-                        style={{ height: "160px" }}
+                        style={{ height: "160px", willChange: "transform" }}
                       >
                         {getThumbnail(post) ? (
                           <img
                             src={getThumbnail(post)!}
                             alt={post.title}
-                            className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-500"
+                            className="w-full h-full object-cover opacity-90 transition-transform duration-700 ease-out group-hover:scale-105"
+                            style={{ willChange: "transform" }}
                           />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center">
@@ -247,7 +249,7 @@ export default function Blog() {
                 href="https://medium.com/@tracekadenyi"
                 target="_blank"
                 rel="noreferrer"
-                className="font-mono text-[#4a5568] hover:text-[#ff3b3f] text-xs tracking-[0.12em] uppercase no-underline transition-colors duration-200"
+                className="font-mono text-[#4a5568] hover:text-[#ff3b3f] text-xs tracking-[0.12em] uppercase no-underline transition-colors duration-200 cursor-default"
               >
                 All articles on Medium →
               </a>
