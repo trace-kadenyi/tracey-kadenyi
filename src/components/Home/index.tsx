@@ -20,7 +20,7 @@ export default function Hero() {
         {/* Eyebrow */}
         <div className="flex items-center gap-3 mb-7">
           <span className="block w-6 h-px bg-[#ff3b3f] shrink-0" />
-          <span className="font-mono text-[#ff3b3f] text-[11px] tracking-[0.18em] uppercase">
+          <span className="font-mono text-[#ff3b3f] text-[11px] tracking-[0.18em] uppercase font-medium">
             Tracey Kadenyi · {meta.title}
           </span>
         </div>
@@ -30,9 +30,9 @@ export default function Hero() {
           className="font-display font-black text-[#0f1626] leading-[1.2] mb-5"
           style={{ fontSize: "clamp(2rem, 3vw, 2.8rem)" }}
         >
-          I solve problems <br />
+          I solve problems— <br />
           <span className="text-[0.9em] tracking-tighter">
-            — one line of code at a time.
+            ; one line of code at a time.
           </span>
         </h1>
 
