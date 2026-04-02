@@ -1,16 +1,13 @@
 "use client";
-
-import { formatDate, stripHtml, truncateTitle } from "@/hooks/text";
 import { useEffect, useState, useRef } from "react";
 
-interface Post {
-  title: string;
-  link: string;
-  pubDate: string;
-  description: string;
-  thumbnail: string;
-  content: string;
-}
+import {
+  formatDate,
+  getThumbnail,
+  stripHtml,
+  truncateTitle,
+} from "@/hooks/text";
+import type { Post } from "@/types";
 
 function useVisible(ref: React.RefObject<HTMLDivElement | null>) {
   const [visible, setVisible] = useState(false);
@@ -25,15 +22,6 @@ function useVisible(ref: React.RefObject<HTMLDivElement | null>) {
     return () => obs.disconnect();
   }, []);
   return visible;
-}
-
-function getThumbnail(item: Post) {
-  // Try the thumbnail field first
-  if (item.thumbnail && item.thumbnail.startsWith("http"))
-    return item.thumbnail;
-  // Fall back to extracting first image from description
-  const match = item.description.match(/<img[^>]+src="([^">]+)"/);
-  return match ? match[1] : null;
 }
 
 export default function Blog() {
