@@ -150,7 +150,7 @@ export default function About() {
               >
                 <span className="font-sans text-[#4a5568] text-base leading-relaxed">
                   Clean architecture, modular design, and maintainable code are
-                  a personal standard. I build with scalability and reliability
+                  a personal standard. I code with scalability and reliability
                   in mind, from database schema to API design to frontend state
                   management.
                 </span>
