@@ -1,6 +1,6 @@
 "use client";
 
-import { truncateTitle } from "@/hooks/text";
+import { formatDate, truncateTitle } from "@/hooks/text";
 import { useEffect, useState, useRef } from "react";
 
 interface Post {
@@ -25,13 +25,6 @@ function useVisible(ref: React.RefObject<HTMLDivElement | null>) {
     return () => obs.disconnect();
   }, []);
   return visible;
-}
-
-function formatDate(dateStr: string) {
-  return new Date(dateStr).toLocaleDateString("en-US", {
-    month: "short",
-    year: "numeric",
-  });
 }
 
 function stripHtml(html: string) {
