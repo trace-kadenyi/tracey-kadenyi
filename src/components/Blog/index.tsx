@@ -117,7 +117,7 @@ export default function Blog() {
                 rel="noreferrer"
                 className="font-mono text-[#4a5568] hover:text-[#ff3b3f] text-xs tracking-[0.12em] uppercase no-underline transition-colors duration-200 cursor-default"
               >
-                All articles on Medium →
+                All articles →
               </a>
             </div>
           )}
