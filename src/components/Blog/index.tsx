@@ -27,7 +27,7 @@ export default function Blog() {
   return (
     <section id="blog" ref={sectionRef}>
       <div
-        className="px-[8%] pt-24 pb-24 relative overflow-hidden"
+        className="px-[8%] py-24 relative overflow-hidden"
         style={{ background: "#f9f9f7" }}
       >
         {/* Background word */}
