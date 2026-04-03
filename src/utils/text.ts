@@ -9,6 +9,7 @@ export function truncateTitle(title: string, maxLength: number = 60) {
 // format date helper func
 export function formatDate(dateStr: string) {
   return new Date(dateStr).toLocaleDateString("en-US", {
+    day: "numeric",
     month: "short",
     year: "numeric",
   });
