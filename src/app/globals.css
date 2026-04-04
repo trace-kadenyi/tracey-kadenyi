@@ -1,20 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Cabinet+Grotesk:wght@400;500;700;800;900&display=swap");
-
 @import "tailwindcss";
 
-:root {
-  --font-display: "Cabinet Grotesk", sans-serif;
-  --font-sans: "Outfit", sans-serif;
+@theme {
+  --font-display: system-ui, sans-serif;
+  --font-sans: "IBM Plex Sans", sans-serif;
   --font-mono: "DM Mono", monospace;
+}
 
-  /* Accent */
+:root {
   --color-em: #ff3b3f;
   --color-em-deep: #e02e32;
-
-  /* Navy */
   --color-navy: #0f1626;
-
-  /* Text */
   --color-ink: #0f1626;
   --color-ink-muted: #4a5568;
   --color-ink-faint: #9aa5b4;
