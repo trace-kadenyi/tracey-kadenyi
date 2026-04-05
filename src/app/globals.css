@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-display: system-ui, sans-serif;
   --font-sans: "IBM Plex Sans", sans-serif;
@@ -39,10 +41,10 @@
     overflow-x: hidden;
   }
 
-  .dark body {
+  /* .dark body {
     background-color: #0f1626;
     color: #eef2ee;
-  }
+  } */
 
   @media (pointer: coarse) {
     body {
