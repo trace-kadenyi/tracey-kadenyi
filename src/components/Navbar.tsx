@@ -52,7 +52,7 @@ export default function Navbar() {
       >
         <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
-          <span className="font-display text-[#ff3b3f] font-bold text-lg tracking-widest uppercase">
+          <span className="font-display text-[#0f1626] font-bold text-lg tracking-widest uppercase">
             {meta.shortName}
           </span>
 
