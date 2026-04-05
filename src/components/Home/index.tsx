@@ -12,7 +12,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-white"
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-white dark:bg-[#0d1117]"
     >
       <ParticleCanvas />
 
@@ -20,14 +20,14 @@ export default function Hero() {
         {/* Eyebrow */}
         <div className="flex items-center gap-3 mb-7">
           <span className="block w-6 h-px bg-[#ff3b3f] shrink-0" />
-          <span className="font-mono text-[#ff3b3f] text-[11px] tracking-[0.18em] uppercase font-medium">
+          <span className="font-mono text-[#ff3b3f]   text-[11px] tracking-[0.18em] uppercase font-medium">
             Tracey Kadenyi · {meta.title}
           </span>
         </div>
 
         {/* Headline */}
         <h1
-          className="font-display font-black text-[#0f1626] leading-[1.2] mb-5"
+          className="font-display font-black text-[#0f1626] dark:text-gray-300 leading-[1.2] mb-5"
           style={{ fontSize: "clamp(2rem, 3vw, 2.8rem)" }}
         >
           I solve problems— <br />
@@ -37,7 +37,7 @@ export default function Hero() {
         </h1>
 
         {/* Bio */}
-        <p className="font-sans text-[#4a5568] text-base leading-[1.75] max-w-[520px] mb-9">
+        <p className="font-sans text-[#4a5568] dark:text-[#8b949e] text-base leading-[1.75] max-w-[520px] mb-9">
           {meta.bio}
         </p>
 
@@ -57,7 +57,7 @@ export default function Hero() {
             href={meta.resumeUrl}
             target="_blank"
             rel="noreferrer"
-            className="flex items-center gap-2 px-7 py-3 border border-[rgba(15,22,38,0.2)] text-[#4a5568] font-sans text-sm tracking-[0.04em] rounded-lg no-underline"
+            className="flex items-center gap-2 px-7 py-3 border border-[rgba(15,22,38,0.2)] text-[#4a5568] font-sans text-sm tracking-[0.04em] rounded-lg no-underline dark:border-[rgba(255,255,255,0.1)] dark:text-gray-400"
           >
             <Download size={13} />
             Download CV
@@ -72,7 +72,7 @@ export default function Hero() {
               href={s.url}
               target="_blank"
               rel="noreferrer"
-              className="font-mono text-xs text-[#9aa5b4] no-underline tracking-[0.08em]"
+              className="font-mono text-xs text-[#9aa5b4] dark:text-gray-500 hover:text-[#ff3b3f] no-underline tracking-[0.08em]"
             >
               {s.label}
             </a>
@@ -81,7 +81,7 @@ export default function Hero() {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5 text-[#9aa5b4]">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5 text-[#9aa5b4] dark:text-[#3d444d]">
         <span className="font-mono text-[10px] tracking-[0.2em] uppercase">
           Scroll
         </span>
