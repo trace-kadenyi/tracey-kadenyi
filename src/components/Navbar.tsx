@@ -10,7 +10,7 @@ const links = [
   { label: "About", id: "about" },
   { label: "Projects", id: "projects" },
   { label: "Blog", id: "blog" },
-  { label: "Opportunities", id: "contact" },
+  { label: "Contact", id: "contact" },
 ];
 
 export default function Navbar() {
@@ -26,14 +26,10 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const handleNav = (id: string) => {
+  const handleNav = (link: string) => {
     setMobileOpen(false);
-    setTimeout(() => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const top = el.getBoundingClientRect().top + window.scrollY;
-      window.scrollTo({ top, behavior: "smooth" });
-    }, 50);
+    const el = document.getElementById(link.toLowerCase());
+    el?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
