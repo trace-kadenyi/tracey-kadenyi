@@ -26,10 +26,7 @@ export default function Blog() {
 
   return (
     <section id="blog" ref={sectionRef}>
-      <div
-        className="px-[8%] py-24 relative overflow-hidden min-h-[600px]"
-        style={{ background: "#f9f9f7" }}
-      >
+      <div className="px-[8%] py-24 relative overflow-hidden min-h-[600px] bg-[#f9f9f7]">
         {/* Background word */}
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-display font-black whitespace-nowrap select-none pointer-events-none tracking-[-0.04em] text-[rgba(15,22,38,0.025)]"
