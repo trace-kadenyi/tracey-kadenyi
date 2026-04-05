@@ -5,7 +5,13 @@ import { useTheme } from "next-themes";
 import { Sun, Moon, Menu, X } from "lucide-react";
 import { meta } from "@/lib/data";
 
-const links = ["Home", "About", "Projects", "Blog", "Contact"];
+const links = [
+  { label: "Home", id: "home" },
+  { label: "About", id: "about" },
+  { label: "Projects", id: "projects" },
+  { label: "Blog", id: "blog" },
+  { label: "Opportunities", id: "contact" },
+];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -20,22 +26,33 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const handleNav = (link: string) => {
+  const handleNav = (id: string) => {
     setMobileOpen(false);
-    const el = document.getElementById(link.toLowerCase());
-    el?.scrollIntoView({ behavior: "smooth" });
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const top = el.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({ top, behavior: "smooth" });
+    }, 50);
   };
 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled ? "glass border-b border-edge py-3" : "bg-transparent py-5"
-        }`}
+        className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+        style={{
+          padding: scrolled ? "12px 0" : "20px 0",
+          background: scrolled ? "rgba(255, 255, 255, 0.95)" : "transparent",
+          backdropFilter: scrolled ? "blur(20px)" : "none",
+          WebkitBackdropFilter: scrolled ? "blur(20px)" : "none",
+          borderBottom: scrolled
+            ? "1px solid rgba(15, 22, 38, 0.06)"
+            : "1px solid transparent",
+        }}
       >
         <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
-          <span className="font-display text-em font-bold text-lg tracking-widest uppercase">
+          <span className="font-display text-[#ff3b3f] font-bold text-lg tracking-widest uppercase">
             {meta.shortName}
           </span>
 
@@ -43,31 +60,29 @@ export default function Navbar() {
           <nav className="hidden md:flex items-center gap-8">
             {links.map((link) => (
               <button
-                key={link}
-                onClick={() => handleNav(link)}
-                className="text-ink-muted hover:text-em text-sm tracking-wide transition-colors duration-200 font-sans"
+                key={link.label}
+                onClick={() => handleNav(link.id)}
+                className="text-[#4a5568] hover:text-[#ff3b3f] text-sm tracking-wide transition-colors duration-200 font-sans"
               >
-                {link}
+                {link.label}
               </button>
             ))}
           </nav>
 
           {/* Right side */}
           <div className="flex items-center gap-4">
-            {/* Theme toggle */}
             {mounted && (
               <button
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="w-8 h-8 flex items-center justify-center rounded-full border border-edge hover:border-edge-strong hover:text-em text-ink-muted transition-all duration-200"
+                className="w-8 h-8 flex items-center justify-center rounded-full border border-[rgba(15,22,38,0.1)] hover:border-[rgba(255,59,63,0.4)] hover:text-[#ff3b3f] text-[#4a5568] transition-all duration-200"
               >
                 {theme === "dark" ? <Sun size={14} /> : <Moon size={14} />}
               </button>
             )}
 
-            {/* Mobile hamburger */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden w-8 h-8 flex items-center justify-center text-ink-muted hover:text-em transition-colors"
+              className="md:hidden w-8 h-8 flex items-center justify-center text-[#4a5568] hover:text-[#ff3b3f] transition-colors"
             >
               {mobileOpen ? <X size={18} /> : <Menu size={18} />}
             </button>
@@ -77,20 +92,25 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       <div
-        className={`fixed inset-0 z-40 glass flex flex-col items-center justify-center gap-8 transition-all duration-500 md:hidden ${
+        className={`fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 transition-all duration-500 md:hidden ${
           mobileOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
         }`}
+        style={{
+          background: "rgba(255, 255, 255, 0.97)",
+          backdropFilter: "blur(20px)",
+          WebkitBackdropFilter: "blur(20px)",
+        }}
       >
         {links.map((link, i) => (
           <button
-            key={link}
-            onClick={() => handleNav(link)}
+            key={link.label}
+            onClick={() => handleNav(link.id)}
             style={{ animationDelay: `${i * 60}ms` }}
-            className="font-display text-3xl font-bold text-ink-muted hover:text-em transition-colors duration-200 tracking-wide"
+            className="font-display text-3xl font-bold text-[#4a5568] hover:text-[#ff3b3f] transition-colors duration-200 tracking-wide"
           >
-            {link}
+            {link.label}
           </button>
         ))}
       </div>
