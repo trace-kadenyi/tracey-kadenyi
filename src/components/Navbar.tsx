@@ -19,6 +19,8 @@ export default function Navbar() {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
+  const isDark = mounted && theme === "dark";
+
   useEffect(() => {
     setMounted(true);
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -32,23 +34,35 @@ export default function Navbar() {
     el?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const textColor = isDark ? "#8b949e" : "#4a5568";
+  const logoColor = isDark ? "#e6edf3" : "#0f1626";
+
   return (
     <>
       <header
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
         style={{
           padding: scrolled ? "12px 0" : "20px 0",
-          background: scrolled ? "rgba(255, 255, 255, 0.95)" : "transparent",
+          background: scrolled
+            ? isDark
+              ? "rgba(13, 17, 23, 0.95)"
+              : "rgba(255, 255, 255, 0.95)"
+            : "transparent",
           backdropFilter: scrolled ? "blur(20px)" : "none",
           WebkitBackdropFilter: scrolled ? "blur(20px)" : "none",
           borderBottom: scrolled
-            ? "1px solid rgba(15, 22, 38, 0.06)"
+            ? isDark
+              ? "1px solid rgba(255,255,255,0.02)"
+              : "1px solid rgba(15,22,38,0.06)"
             : "1px solid transparent",
         }}
       >
         <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
-          <span className="font-display text-[#0f1626] font-bold text-lg tracking-widest uppercase">
+          <span
+            className="font-display font-bold text-lg tracking-widest uppercase transition-colors duration-300"
+            style={{ color: logoColor }}
+          >
             {meta.shortName}
           </span>
 
@@ -58,7 +72,8 @@ export default function Navbar() {
               <button
                 key={link.label}
                 onClick={() => handleNav(link.id)}
-                className="text-[#4a5568] hover:text-[#ff3b3f] text-sm tracking-wide transition-colors duration-200 font-sans"
+                className="text-sm tracking-wide transition-colors duration-200 font-sans hover:text-[#ff3b3f]"
+                style={{ color: textColor }}
               >
                 {link.label}
               </button>
@@ -69,16 +84,23 @@ export default function Navbar() {
           <div className="flex items-center gap-4">
             {mounted && (
               <button
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="w-8 h-8 flex items-center justify-center rounded-full border border-[rgba(15,22,38,0.1)] hover:border-[rgba(255,59,63,0.4)] hover:text-[#ff3b3f] text-[#4a5568] transition-all duration-200"
+                onClick={() => setTheme(isDark ? "light" : "dark")}
+                className="w-8 h-8 flex items-center justify-center rounded-full transition-all duration-200 hover:text-[#ff3b3f]"
+                style={{
+                  border: isDark
+                    ? "1px solid rgba(255,255,255,0.1)"
+                    : "1px solid rgba(15,22,38,0.1)",
+                  color: textColor,
+                }}
               >
-                {theme === "dark" ? <Sun size={14} /> : <Moon size={14} />}
+                {isDark ? <Sun size={14} /> : <Moon size={14} />}
               </button>
             )}
 
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden w-8 h-8 flex items-center justify-center text-[#4a5568] hover:text-[#ff3b3f] transition-colors"
+              className="md:hidden w-8 h-8 flex items-center justify-center hover:text-[#ff3b3f] transition-colors"
+              style={{ color: textColor }}
             >
               {mobileOpen ? <X size={18} /> : <Menu size={18} />}
             </button>
@@ -94,7 +116,9 @@ export default function Navbar() {
             : "opacity-0 pointer-events-none"
         }`}
         style={{
-          background: "rgba(255, 255, 255, 0.97)",
+          background: isDark
+            ? "rgba(13, 17, 23, 0.97)"
+            : "rgba(255, 255, 255, 0.97)",
           backdropFilter: "blur(20px)",
           WebkitBackdropFilter: "blur(20px)",
         }}
@@ -103,8 +127,11 @@ export default function Navbar() {
           <button
             key={link.label}
             onClick={() => handleNav(link.id)}
-            style={{ animationDelay: `${i * 60}ms` }}
-            className="font-display text-3xl font-bold text-[#4a5568] hover:text-[#ff3b3f] transition-colors duration-200 tracking-wide"
+            style={{
+              animationDelay: `${i * 60}ms`,
+              color: textColor,
+            }}
+            className="font-display text-3xl font-bold hover:text-[#ff3b3f] transition-colors duration-200 tracking-wide"
           >
             {link.label}
           </button>
