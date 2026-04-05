@@ -52,7 +52,7 @@ export default function RootLayout({
       <body className="noise" style={{ margin: 0, padding: 0 }}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
+          defaultTheme="light"
           enableSystem={false}
         >
           {/* Custom cursor — hidden on touch devices via CSS */}
