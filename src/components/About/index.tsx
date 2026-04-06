@@ -3,7 +3,7 @@
 import { useRef, useEffect, useState } from "react";
 
 import { skillGroups } from "@/lib/data";
-import SkylineChart from "./Home/SkylineChart";
+import SkylineChart from "./SkylineChart";
 
 export default function About() {
   const topRef = useRef<HTMLDivElement>(null);
