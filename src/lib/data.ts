@@ -103,12 +103,12 @@ export const skillGroups = [
 ];
 
 export const featuredSkills = [
-  { name: "JavaScript", level: 98 },
-  { name: "React", level: 92 },
-  { name: "Node.js / Express", level: 90 },
-  { name: "MongoDB", level: 85 },
-  { name: "TypeScript", level: 74 },
-  { name: "Next.js", level: 62 },
+  { name: "JavaScript", short: "JS", level: 98 },
+  { name: "React", short: "React", level: 92 },
+  { name: "Node.js / Express", short: "Node", level: 90 },
+  { name: "MongoDB", short: "MongoDB", level: 85 },
+  { name: "TypeScript", short: "TS", level: 74 },
+  { name: "Next.js", short: "Next", level: 62 },
 ];
 // ─── TESTIMONIALS ──────────────────────────────────────────────────────────
 
