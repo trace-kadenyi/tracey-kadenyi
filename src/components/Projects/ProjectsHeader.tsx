@@ -20,14 +20,13 @@ export default function ProjectsHeader() {
   return (
     <div
       ref={ref}
-      className="bg-white relative overflow-hidden px-[6%] pt-[120px] pb-[80px]"
+      className="bg-white dark:bg-gradient-to-b dark:from-[#0f131a] dark:via-[#0f1626] dark:to-[#0f131a] relative overflow-hidden px-[6%] pt-[120px] pb-[80px]"
     >
       {/* Background WORK text */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-display font-black whitespace-nowrap select-none pointer-events-none tracking-[-0.04em]"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-display font-black whitespace-nowrap select-none pointer-events-none tracking-[-0.04em] text-[rgba(15,22,38,0.03)] dark:text-[rgba(255,255,255,0.02)]/60"
         style={{
           fontSize: "clamp(8rem, 18vw, 18rem)",
-          color: "rgba(15,22,38,0.03)",
         }}
       >
         WORK
@@ -52,7 +51,7 @@ export default function ProjectsHeader() {
 
         {/* Title */}
         <h2
-          className="font-display font-black leading-none tracking-[-0.03em] text-[#0f1626]"
+          className="font-display font-black leading-none tracking-[-0.03em] text-[#0f1626] dark:text-gray-300"
           style={{
             fontSize: "clamp(3rem, 7vw, 6rem)",
             opacity: visible ? 1 : 0,
