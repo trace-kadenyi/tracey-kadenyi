@@ -26,13 +26,10 @@ export default function Blog() {
 
   return (
     <section id="blog" ref={sectionRef}>
-      <div
-        className="px-[8%] py-24 relative overflow-hidden min-h-[600px]"
-        style={{ background: "#f9f9f7" }}
-      >
+      <div className="px-[8%] py-24 relative overflow-hidden min-h-[600px] bg-[#f9f9f7] dark:bg-gradient-to-b dark:from-[#0f1626] dark:via-[#0f1626] dark:to-[#0f131a]">
         {/* Background word */}
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-display font-black whitespace-nowrap select-none pointer-events-none tracking-[-0.04em] text-[rgba(15,22,38,0.025)]"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-display font-black whitespace-nowrap select-none pointer-events-none tracking-[-0.04em] text-[rgba(15,22,38,0.025)] dark:text-[rgba(255,255,255,0.02)]/70"
           style={{ fontSize: "clamp(8rem, 18vw, 16rem)" }}
         >
           BLOG
@@ -55,7 +52,7 @@ export default function Blog() {
 
           {/* Heading */}
           <h2
-            className="font-display font-black text-[#0f1626] leading-none tracking-[-0.03em] mb-16"
+            className="font-display font-black text-[#0f1626] dark:text-gray-300 leading-none tracking-[-0.03em] mb-16"
             style={{
               fontSize: "clamp(2.5rem, 5vw, 4.5rem)",
               opacity: visible ? 1 : 0,
@@ -115,7 +112,7 @@ export default function Blog() {
                 href="https://medium.com/@tracekadenyi"
                 target="_blank"
                 rel="noreferrer"
-                className="font-mono text-[#4a5568] hover:text-[#ff3b3f] text-xs tracking-[0.12em] uppercase no-underline transition-colors duration-200 cursor-default"
+                className="font-mono text-[#4a5568] dark:text-gray-400 hover:text-[#ff3b3f] text-xs tracking-[0.12em] uppercase no-underline transition-colors duration-200 cursor-default"
               >
                 All articles →
               </a>

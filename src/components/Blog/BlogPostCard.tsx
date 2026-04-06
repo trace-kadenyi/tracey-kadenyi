@@ -24,7 +24,7 @@ export default function BlogPostCard({
       }}
     >
       <div
-        className="bg-white rounded-2xl overflow-hidden border border-[rgba(15,22,38,0.08)] group-hover:border-[rgba(255,59,63,0.3)] transition-all duration-300 h-full flex flex-col"
+        className="bg-white dark:bg-[#0f1626] rounded-2xl overflow-hidden border border-[rgba(15,22,38,0.08)] dark:border-gray-800 group-hover:border-[rgba(255,59,63,0.3)] transition-all duration-300 h-full flex flex-col"
         style={{ boxShadow: "0 4px 24px rgba(15,22,38,0.06)" }}
       >
         {/* Thumbnail */}
@@ -57,12 +57,12 @@ export default function BlogPostCard({
               {formatDate(post.pubDate)}
             </span>
             <h3
-              className="font-display font-black text-[#0f1626] leading-[1.2] mb-3 group-hover:text-[#ff3b3f] transition-colors duration-200"
+              className="font-display font-black text-[#0f1626] dark:text-gray-300 leading-[1.2] mb-3 group-hover:text-[#ff3b3f] transition-colors duration-200"
               style={{ fontSize: "1.1rem" }}
             >
               {truncateTitle(post.title, 55)}
             </h3>
-            <p className="font-sans text-[#4a5568] text-sm leading-relaxed">
+            <p className="font-sans text-[#4a5568] dark:text-gray-400 text-sm leading-relaxed">
               {stripHtml(post.description)}
             </p>
           </div>

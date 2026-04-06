@@ -1,61 +1,9 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
-import { featuredSkills, skillGroups } from "@/lib/data";
 
-function SkylineChart({ visible }: { visible: boolean }) {
-  const maxHeight = 180;
-
-  return (
-    <div className="w-full">
-      {/* Columns */}
-      <div
-        className="flex items-end gap-3 md:gap-5"
-        style={{ height: `${maxHeight}px` }}
-      >
-        {featuredSkills.map((skill, i) => {
-          const height = (skill.level / 100) * maxHeight;
-          const isAccent = i === 1 || i === 4;
-          return (
-            <div
-              key={skill.name}
-              className="flex-1 flex flex-col items-center justify-end"
-            >
-              <div
-                className={`w-full rounded-t-md ${isAccent ? "bg-[#ff3b3f]" : "bg-[#0f1626]"}`}
-                style={{
-                  height: visible ? `${height}px` : "0px",
-                  transition: `height 1s cubic-bezier(0.16,1,0.3,1) ${i * 0.08}s`,
-                }}
-              />
-            </div>
-          );
-        })}
-      </div>
-
-      {/* Baseline */}
-      <div className="w-full h-px bg-[rgba(15,22,38,0.15)] mb-3" />
-
-      {/* Labels */}
-      <div className="flex gap-3 md:gap-5">
-        {featuredSkills.map((skill, i) => (
-          <div
-            key={skill.name}
-            className="flex-1 text-center"
-            style={{
-              opacity: visible ? 1 : 0,
-              transition: `opacity 0.5s ease ${0.4 + i * 0.08}s`,
-            }}
-          >
-            <span className="font-mono text-[9px] md:text-[10px] text-[#0f1626] tracking-[0.08em] uppercase leading-tight block">
-              {skill.name}
-            </span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
+import { skillGroups } from "@/lib/data";
+import SkylineChart from "./SkylineChart";
 
 export default function About() {
   const topRef = useRef<HTMLDivElement>(null);
@@ -95,12 +43,11 @@ export default function About() {
       {/* ── Top half — white ── */}
       <div
         ref={topRef}
-        className="px-[8%] pt-20 pb-20 relative overflow-hidden"
-        style={{ background: "#f9f9f7" }}
+        className="bg-[#f9f9f7] dark:bg-gradient-to-b dark:from-[#0f131a] dark:via-[#0f1626] dark:to-[#0f131a] px-[8%] pt-20 pb-20 relative overflow-hidden"
       >
         {/* Background word */}
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-display font-black whitespace-nowrap select-none pointer-events-none tracking-[-0.04em] text-[rgba(15,22,38,0.025)]"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-display font-black whitespace-nowrap select-none pointer-events-none tracking-[-0.04em] text-[rgba(15,22,38,0.025)] dark:text-[rgba(255,255,255,0.02)]/60"
           style={{ fontSize: "clamp(8rem, 18vw, 16rem)" }}
         >
           SKILLS
@@ -135,20 +82,20 @@ export default function About() {
               }}
             >
               <h2
-                className="font-display font-black text-[#0f1626] leading-[1.1] tracking-[-0.02em] mb-6"
+                className="font-display font-black text-[#0f1626] dark:text-gray-300 leading-[1.1] tracking-[-0.02em] mb-6"
                 style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)" }}
               >
                 I build scalable systems that turn complex ideas into reliable
                 products.
               </h2>
               <p
-                className="font-sans text-[#4a5568] text-base leading-relaxed"
+                className="font-sans text-[#4a5568] dark:text-[#8b949e] text-base leading-relaxed"
                 style={{
                   opacity: topVisible ? 1 : 0,
                   transition: "opacity 0.8s ease 0.4s",
                 }}
               >
-                <span className="font-sans text-[#4a5568] text-base leading-relaxed">
+                <span className="font-sans text-[#4a5568] dark:text-[#8b949e] text-base leading-relaxed">
                   Clean architecture, modular design, and maintainable code are
                   a personal standard. I code with scalability and reliability
                   in mind, from database schema to API design to frontend state

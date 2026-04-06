@@ -20,11 +20,7 @@ function ProjectScene({
   const [glowPos, setGlowPos] = useState({ x: 50, y: 50 });
 
   const isEven = index % 2 === 0;
-  const bg = isEven ? "#0f1626" : "#ffffff";
-  const fg = isEven ? "#ffffff" : "#0f1626";
-  const fgMuted = isEven ? "rgba(255,255,255,0.55)" : "#4a5568";
   const borderCol = isEven ? "rgba(255,59,63,0.2)" : "rgba(15,22,38,0.08)";
-  const highlightBg = isEven ? "rgba(255,59,63,0.08)" : "rgba(15,22,38,0.04)";
   const highlightBorder = isEven
     ? "rgba(255,59,63,0.15)"
     : "rgba(15,22,38,0.1)";
@@ -58,17 +54,29 @@ function ProjectScene({
       ref={sectionRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative min-h-screen flex items-center overflow-hidden px-[6%] py-20"
-      style={{ background: bg }}
+      className={`
+    relative min-h-screen flex items-center overflow-hidden px-[6%] py-20
+    ${
+      isEven
+        ? "bg-[#0f1626] dark:bg-[#0f1626]"
+        : "bg-[#ffffff] bg-gradient-to-b dark:from-[#0f131a] dark:via-[#0f1626] dark:to-[#0f131a]"
+    }
+  `}
     >
       {/* Giant background number */}
       <div
-        className="absolute top-1/2 -translate-y-1/2 font-display font-black leading-none select-none pointer-events-none tracking-[-0.05em]"
+        className={`
+    absolute top-1/2 -translate-y-1/2 font-display font-black leading-none select-none pointer-events-none tracking-[-0.05em]
+    ${
+      isEven
+        ? "text-[rgba(255,59,63,0.05)]"
+        : "text-[rgba(15,22,38,0.04)] dark:text-[rgba(255,59,63,0.05)]"
+    }
+  `}
         style={{
           left: isEven ? "-1%" : "auto",
           right: isEven ? "auto" : "-1%",
           fontSize: "clamp(14rem, 25vw, 26rem)",
-          color: isEven ? "rgba(255,59,63,0.05)" : "rgba(15,22,38,0.04)",
         }}
       >
         0{index + 1}
@@ -108,9 +116,13 @@ function ProjectScene({
 
           {/* Title */}
           <h2
-            className="font-display font-black leading-none mb-5 tracking-[-0.03em]"
+            className={`font-display font-black leading-none mb-5 tracking-[-0.03em] ${
+              isEven
+                ? "text-white dark:text-gray-200"
+                : "text-[#0f1626] dark:text-gray-200"
+            }
+  `}
             style={{
-              color: fg,
               fontSize: "clamp(2.8rem, 5vw, 4.5rem)",
             }}
           >
@@ -119,8 +131,9 @@ function ProjectScene({
 
           {/* Description */}
           <p
-            className="font-sans text-[0.95rem] leading-[1.75] mb-6 max-w-[400px]"
-            style={{ color: fgMuted }}
+            className={`font-sans text-[0.95rem] leading-[1.75] mb-6 max-w-[400px] 
+            ${isEven ? "text-white/55" : "text-[#4a5568] dark:text-white/65"}
+  `}
           >
             {project.description}
           </p>
@@ -130,10 +143,10 @@ function ProjectScene({
             {project.highlights.map((h, i) => (
               <li
                 key={i}
-                className="font-sans text-[0.85rem] px-3 py-2 rounded-md flex items-start gap-[10px]"
+                className={`font-sans text-[0.85rem] px-3 py-2 rounded-md flex items-start gap-[10px] 
+            ${isEven ? "text-white/55 bg-red-500/10" : "text-[#4a5568] dark:text-white/65 bg-[#0f1626]/5 dark:bg-red-500/10"}
+   `}
                 style={{
-                  color: fgMuted,
-                  background: highlightBg,
                   border: `1px solid ${highlightBorder}`,
                   opacity: visible ? 1 : 0,
                   transform: visible ? "translateX(0)" : "translateX(-20px)",
@@ -151,11 +164,9 @@ function ProjectScene({
             {project.tags.map((tag) => (
               <span
                 key={tag}
-                className="font-mono text-[10px] px-2.5 py-1 rounded text-[#ff3b3f] tracking-[0.05em]"
-                style={{
-                  background: "rgba(255,59,63,0.08)",
-                  border: "1px solid rgba(255,59,63,0.18)",
-                }}
+                className={`font-mono text-[10px] px-2.5 py-1 rounded text-[#ff3b3f] tracking-[0.05em] bg-[rgba(255,59,63,0.08)] border border-[rgba(255,59,63,0.18)] 
+            ${isEven ? "" : "dark:text-red-300"}
+  `}
               >
                 {tag}
               </span>
@@ -177,11 +188,14 @@ function ProjectScene({
               href={project.sourceUrl}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-2 px-7 py-3 font-display font-bold text-[13px] rounded-lg no-underline tracking-[0.04em]"
-              style={{
-                border: `1px solid ${isEven ? "rgba(255,255,255,0.2)" : "rgba(15,22,38,0.2)"}`,
-                color: fg,
-              }}
+              className={`
+    flex items-center gap-2 px-7 py-3 font-display font-bold text-[13px] rounded-lg no-underline tracking-[0.04em] border
+    ${
+      isEven
+        ? "text-[#ffffff] border-white/20"
+        : "text-[#0f1626] dark:text-[#ffffff] border-[rgba(15,22,38,0.2)] dark:border-white/20"
+    }
+  `}
             >
               <Code2 size={13} />
               Source
