@@ -46,8 +46,15 @@ export default function SkylineChart({ visible }: { visible: boolean }) {
               transition: `opacity 0.5s ease ${0.4 + i * 0.08}s`,
             }}
           >
-            <span className="font-mono text-[9px] md:text-[10px] text-[#0f1626] dark:text-[#8b949e] tracking-[0.08em] uppercase leading-tight block">
-              {skill.name}
+            <span className="font-mono text-[9px] md:text-[10px] text-[#0f1626] dark:text-[#8b949e] tracking-[0.08em]  leading-tight block">
+              <>
+                <span className="hidden [@media(max-width:370px)]:inline">
+                  {skill.short}
+                </span>
+                <span className="[@media(max-width:370px)]:hidden uppercase">
+                  {skill.name}
+                </span>
+              </>
             </span>
           </div>
         ))}
