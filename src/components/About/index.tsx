@@ -134,7 +134,7 @@ export default function About() {
         <div className="relative z-10 max-w-[1200px] mx-auto">
           {/* Stat cards */}
           <div
-            className="grid grid-cols-3 gap-6 mb-16"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-16"
             style={{
               opacity: bottomVisible ? 1 : 0,
               transform: bottomVisible ? "translateY(0)" : "translateY(30px)",
@@ -171,7 +171,7 @@ export default function About() {
             {skillGroups.map((group, gi) => (
               <div
                 key={group.label}
-                className="flex flex-wrap items-start gap-3"
+                className="flex flex-col sm:flex-row items-start gap-3"
                 style={{
                   opacity: bottomVisible ? 1 : 0,
                   transform: bottomVisible
