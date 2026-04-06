@@ -69,7 +69,7 @@ export default function About() {
           </div>
 
           {/* Statement + Chart side by side */}
-          <div className="grid grid-cols-2 gap-[80px] items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-[80px] items-center">
             {/* Left — statement */}
             <div
               style={{
