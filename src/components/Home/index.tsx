@@ -42,7 +42,7 @@ export default function Hero() {
         </p>
 
         {/* CTAs */}
-        <div className="flex flex-wrap items-center gap-3 mb-9">
+        <div className="flex  items-center gap-3 mb-9">
           <button
             onClick={() =>
               document
@@ -57,7 +57,7 @@ export default function Hero() {
             href={meta.resumeUrl}
             target="_blank"
             rel="noreferrer"
-            className="flex items-center gap-2 px-7 py-3 border border-[rgba(15,22,38,0.2)] text-[#4a5568] font-sans text-sm tracking-[0.04em] rounded-lg no-underline dark:border-[rgba(255,255,255,0.1)] dark:text-gray-400"
+            className="flex items-center text-center gap-2 px-7 py-3 border border-[rgba(15,22,38,0.2)] text-[#4a5568] font-sans text-sm tracking-[0.04em] rounded-lg no-underline dark:border-[rgba(255,255,255,0.1)] dark:text-gray-400"
           >
             <Download size={13} />
             Download CV
@@ -65,7 +65,7 @@ export default function Hero() {
         </div>
 
         {/* Social links */}
-        <div className="flex items-center gap-7">
+        <div className="flex flex-wrap items-center gap-7">
           {socials.map((s) => (
             <a
               key={s.label}
