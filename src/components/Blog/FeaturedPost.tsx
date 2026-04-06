@@ -47,18 +47,18 @@ export default function FeaturedPost({ post, visible }: FeaturedPostProps) {
         </div>
 
         {/* Content */}
-        <div className="bg-white p-10 flex flex-col justify-between">
+        <div className="bg-white dark:bg-gradient-to-b dark:from-[#0f131a] dark:via-[#0f1626] dark:to-[#0f131a] p-10 flex flex-col justify-between">
           <div>
             <span className="font-mono text-[#ff3b3f] text-[10px] tracking-[0.15em] uppercase mb-4 block">
               Featured · {formatDate(post.pubDate)}
             </span>
             <h3
-              className="font-display font-black text-[#0f1626] leading-[1.15] mb-4 group-hover:text-[#ff3b3f] transition-colors duration-200"
+              className="font-display font-black text-[#0f1626] leading-[1.15] mb-4 group-hover:text-[#ff3b3f] dark:text-gray-300 transition-colors duration-200"
               style={{ fontSize: "clamp(1.2rem, 2vw, 1.6rem)" }}
             >
               {truncateTitle(post.title, 85)}
             </h3>
-            <p className="font-sans text-[#4a5568] text-sm leading-relaxed">
+            <p className="font-sans text-[#4a5568] dark:text-gray-400 text-sm leading-relaxed">
               {stripHtml(post.description)}
             </p>
           </div>
