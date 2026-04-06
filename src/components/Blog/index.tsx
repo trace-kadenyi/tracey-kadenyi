@@ -85,7 +85,7 @@ export default function Blog() {
               {featured && <FeaturedPost post={featured} visible={visible} />}
 
               {/* Smaller posts */}
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {rest.map((post, i) => (
                   <BlogPostCard
                     key={post.link}
