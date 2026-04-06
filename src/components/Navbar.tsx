@@ -72,8 +72,7 @@ export default function Navbar() {
               <button
                 key={link.label}
                 onClick={() => handleNav(link.id)}
-                className="text-sm tracking-wide transition-colors duration-200 font-sans hover:text-[#ff3b3f]"
-                style={{ color: textColor }}
+                className="text-sm tracking-wide transition-colors duration-200 font-sans text-[#0f1626] dark:text-[#e6edf3]  hover:text-[#ff3b3f]"
               >
                 {link.label}
               </button>
@@ -85,13 +84,7 @@ export default function Navbar() {
             {mounted && (
               <button
                 onClick={() => setTheme(isDark ? "light" : "dark")}
-                className="w-8 h-8 flex items-center justify-center rounded-full transition-all duration-200 hover:text-[#ff3b3f]"
-                style={{
-                  border: isDark
-                    ? "1px solid rgba(255,255,255,0.1)"
-                    : "1px solid rgba(15,22,38,0.1)",
-                  color: textColor,
-                }}
+                className="w-8 h-8 flex items-center justify-center rounded-full transition-all duration-200 text-[#0f1626] dark:text-[#e6edf3] hover:text-[#ff3b3f] border border-[rgba(15,22,38,0.1)] dark:border-[rgba(255,255,255,0.1)] hover:border-[#ff3b3f]/50"
               >
                 {isDark ? <Sun size={14} /> : <Moon size={14} />}
               </button>
@@ -99,8 +92,7 @@ export default function Navbar() {
 
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden w-8 h-8 flex items-center justify-center hover:text-[#ff3b3f] transition-colors"
-              style={{ color: textColor }}
+              className="md:hidden w-8 h-8 flex items-center justify-center text-[#0f1626] dark:text-[#e6edf3] hover:text-[#ff3b3f] transition-colors"
             >
               {mobileOpen ? <X size={18} /> : <Menu size={18} />}
             </button>
