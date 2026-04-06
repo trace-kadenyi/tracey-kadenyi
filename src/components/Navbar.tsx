@@ -34,7 +34,7 @@ export default function Navbar() {
     el?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const textColor = isDark ? "#8b949e" : "#4a5568";
+  const textColor = isDark ? "#e6edf3" : "#0f1626";
   const logoColor = isDark ? "#e6edf3" : "#0f1626";
 
   return (
@@ -129,9 +129,8 @@ export default function Navbar() {
             onClick={() => handleNav(link.id)}
             style={{
               animationDelay: `${i * 60}ms`,
-              color: textColor,
             }}
-            className="font-display text-3xl font-bold hover:text-[#ff3b3f] transition-colors duration-200 tracking-wide"
+            className="font-display text-[#0f1626] dark:text-[#e6edf3]  font-bold hover:text-[#ff3b3f] transition-colors duration-200 tracking-wide"
           >
             {link.label}
           </button>
