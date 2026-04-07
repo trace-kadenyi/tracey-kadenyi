@@ -1,14 +1,29 @@
 "use client";
-
+import { useEffect } from "react";
 import dynamic from "next/dynamic";
-import { meta, socials } from "@/lib/data";
 import { ArrowDown, Download } from "lucide-react";
+
+import { meta, socials } from "@/lib/data";
+import { getCachedPosts, setCachedPosts } from "@/lib/blogCache";
 
 const ParticleCanvas = dynamic(() => import("./ParticleCanvas"), {
   ssr: false,
 });
 
 export default function Hero() {
+  useEffect(() => {
+    if (getCachedPosts() !== null) return;
+
+    fetch("/api/blog")
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.items) {
+          setCachedPosts(data.items.slice(0, 3));
+        }
+      })
+      .catch(() => {});
+  }, []);
+
   return (
     <section
       id="home"
