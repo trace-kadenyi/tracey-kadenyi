@@ -22,7 +22,7 @@ export const projects = [
       "Tailwind",
       "Supabase",
     ],
-    liveUrl: "https://planit-hq.vercel.app/",
+    liveUrl: "https://planit.traceykadenyi.com/",
     sourceUrl: "https://github.com/trace-kadenyi/PlaniT",
     images: [
       "/screenshots/planit/dashboard-dark.png",
