@@ -35,10 +35,11 @@ export default function BlogPostCard({
           <div className="absolute inset-0 overflow-hidden">
             {getThumbnail(post) ? (
               <img
+                loading="lazy"
                 src={getThumbnail(post)!}
                 alt={post.title}
                 className="w-full h-full object-cover opacity-90 transition-transform duration-700 ease-out group-hover:scale-105"
-                style={{ willChange: "transform" }}
+                style={{ willChange: "opacity, transform" }}
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center">
