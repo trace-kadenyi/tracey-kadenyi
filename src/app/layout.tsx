@@ -1,8 +1,10 @@
 "use client";
 
-import "./globals.css";
 import { useState, useEffect, useRef } from "react";
 import { ThemeProvider } from "next-themes";
+import Script from "next/script";
+
+import "./globals.css";
 
 export default function RootLayout({
   children,
@@ -34,6 +36,15 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning style={{ margin: 0, padding: 0 }}>
       <head>
         <title>Tracey Kadenyi — Full-Stack Developer</title>
+        <Script id="gtm-script" strategy="afterInteractive">
+          {`
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5FN4BNRX');
+  `}
+        </Script>
         <meta
           name="description"
           content="Full-stack web developer specialising in MERN stack, Next.js, and building things that matter."
@@ -50,6 +61,14 @@ export default function RootLayout({
         />
       </head>
       <body className="noise" style={{ margin: 0, padding: 0 }}>
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-5FN4BNRX"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
