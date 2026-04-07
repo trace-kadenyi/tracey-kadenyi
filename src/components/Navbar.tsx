@@ -6,7 +6,6 @@ import { Sun, Moon, Menu, X } from "lucide-react";
 import { meta } from "@/lib/data";
 import { startScrolling } from "@/hooks/useScrolling";
 
-
 const links = [
   { label: "Home", id: "home" },
   { label: "About", id: "about" },
@@ -30,22 +29,24 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const handleNav = (id: string) => {
+    setMobileOpen(false);
 
-const handleNav = (id: string) => {
-  setMobileOpen(false);
+    const target = document.getElementById(id);
+    if (!target) return;
 
-  const target = document.getElementById(id);
-  if (!target) return;
+    // Flag that we're doing programmatic scrolling
+    // startScrolling();
 
-  // Flag that we're doing programmatic scrolling
-  startScrolling();
+    const navHeight = 64;
+    const top = target.getBoundingClientRect().top + window.scrollY - navHeight;
+    const heavySections = ["contact"];
 
-  const navHeight = 64;
-  const top = target.getBoundingClientRect().top + window.scrollY - navHeight;
-  window.scrollTo({ top, behavior: "smooth" });
-};
+    const behavior = heavySections.includes(id) ? "auto" : "smooth";
 
-  const textColor = isDark ? "#e6edf3" : "#0f1626";
+    window.scrollTo({ top, behavior });
+  };
+
   const logoColor = isDark ? "#e6edf3" : "#0f1626";
 
   return (
