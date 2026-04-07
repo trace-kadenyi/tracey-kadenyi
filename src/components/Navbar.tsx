@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { Sun, Moon, Menu, X } from "lucide-react";
 import { meta } from "@/lib/data";
+import { startScrolling } from "@/hooks/useScrolling";
+
 
 const links = [
   { label: "Home", id: "home" },
@@ -28,11 +30,20 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const handleNav = (link: string) => {
-    setMobileOpen(false);
-    const el = document.getElementById(link.toLowerCase());
-    el?.scrollIntoView({ behavior: "smooth" });
-  };
+
+const handleNav = (id: string) => {
+  setMobileOpen(false);
+
+  const target = document.getElementById(id);
+  if (!target) return;
+
+  // Flag that we're doing programmatic scrolling
+  startScrolling();
+
+  const navHeight = 64;
+  const top = target.getBoundingClientRect().top + window.scrollY - navHeight;
+  window.scrollTo({ top, behavior: "smooth" });
+};
 
   const textColor = isDark ? "#e6edf3" : "#0f1626";
   const logoColor = isDark ? "#e6edf3" : "#0f1626";
