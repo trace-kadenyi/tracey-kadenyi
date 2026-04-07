@@ -20,7 +20,7 @@ export default function FeaturedPost({ post, visible }: FeaturedPostProps) {
       }}
     >
       <div
-        className="grid grid-cols-2 gap-0 rounded-2xl overflow-hidden border border-[rgba(15,22,38,0.08)] group-hover:border-[rgba(255,59,63,0.3)] transition-all duration-300"
+        className="grid grid-cols-1 md:grid-cols-2 gap-0 rounded-2xl overflow-hidden border border-[rgba(15,22,38,0.08)] group-hover:border-[rgba(255,59,63,0.3)] transition-all duration-300"
         style={{ boxShadow: "0 4px 24px rgba(15,22,38,0.06)" }}
       >
         {/* Image */}
@@ -31,10 +31,11 @@ export default function FeaturedPost({ post, visible }: FeaturedPostProps) {
           <div className="absolute inset-0 overflow-hidden">
             {getThumbnail(post) ? (
               <img
+                loading="lazy"
                 src={getThumbnail(post)!}
                 alt={post.title}
                 className="w-full h-full object-cover opacity-90 transition-transform duration-700 ease-out group-hover:scale-105"
-                style={{ willChange: "transform" }}
+                style={{ willChange: "opacity, transform" }}
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center">

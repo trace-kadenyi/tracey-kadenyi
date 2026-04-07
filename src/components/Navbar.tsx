@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { Sun, Moon, Menu, X } from "lucide-react";
 import { meta } from "@/lib/data";
+import { startScrolling } from "@/hooks/useScrolling";
 
 const links = [
   { label: "Home", id: "home" },
@@ -28,13 +29,24 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const handleNav = (link: string) => {
+  const handleNav = (id: string) => {
     setMobileOpen(false);
-    const el = document.getElementById(link.toLowerCase());
-    el?.scrollIntoView({ behavior: "smooth" });
+
+    const target = document.getElementById(id);
+    if (!target) return;
+
+    // Flag that we're doing programmatic scrolling
+    // startScrolling();
+
+    const navHeight = 64;
+    const top = target.getBoundingClientRect().top + window.scrollY - navHeight;
+    const heavySections = ["contact"];
+
+    const behavior = heavySections.includes(id) ? "auto" : "smooth";
+
+    window.scrollTo({ top, behavior });
   };
 
-  const textColor = isDark ? "#8b949e" : "#4a5568";
   const logoColor = isDark ? "#e6edf3" : "#0f1626";
 
   return (
@@ -72,8 +84,7 @@ export default function Navbar() {
               <button
                 key={link.label}
                 onClick={() => handleNav(link.id)}
-                className="text-sm tracking-wide transition-colors duration-200 font-sans hover:text-[#ff3b3f]"
-                style={{ color: textColor }}
+                className="text-sm tracking-wide transition-colors duration-200 font-sans text-[#0f1626] dark:text-[#e6edf3]  hover:text-[#ff3b3f]"
               >
                 {link.label}
               </button>
@@ -85,13 +96,7 @@ export default function Navbar() {
             {mounted && (
               <button
                 onClick={() => setTheme(isDark ? "light" : "dark")}
-                className="w-8 h-8 flex items-center justify-center rounded-full transition-all duration-200 hover:text-[#ff3b3f]"
-                style={{
-                  border: isDark
-                    ? "1px solid rgba(255,255,255,0.1)"
-                    : "1px solid rgba(15,22,38,0.1)",
-                  color: textColor,
-                }}
+                className="w-8 h-8 flex items-center justify-center rounded-full transition-all duration-200 text-[#0f1626] dark:text-[#e6edf3] hover:text-[#ff3b3f] border border-[rgba(15,22,38,0.1)] dark:border-[rgba(255,255,255,0.1)] hover:border-[#ff3b3f]/50"
               >
                 {isDark ? <Sun size={14} /> : <Moon size={14} />}
               </button>
@@ -99,8 +104,7 @@ export default function Navbar() {
 
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden w-8 h-8 flex items-center justify-center hover:text-[#ff3b3f] transition-colors"
-              style={{ color: textColor }}
+              className="md:hidden w-8 h-8 flex items-center justify-center text-[#0f1626] dark:text-[#e6edf3] hover:text-[#ff3b3f] transition-colors"
             >
               {mobileOpen ? <X size={18} /> : <Menu size={18} />}
             </button>
@@ -129,9 +133,8 @@ export default function Navbar() {
             onClick={() => handleNav(link.id)}
             style={{
               animationDelay: `${i * 60}ms`,
-              color: textColor,
             }}
-            className="font-display text-3xl font-bold hover:text-[#ff3b3f] transition-colors duration-200 tracking-wide"
+            className="font-display text-[#0f1626] dark:text-[#e6edf3]  font-bold hover:text-[#ff3b3f] transition-colors duration-200 tracking-wide"
           >
             {link.label}
           </button>

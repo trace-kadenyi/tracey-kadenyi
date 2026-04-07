@@ -7,15 +7,21 @@ export function useVisible(
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    if (!ref.current) return;
+
     const obs = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) setVisible(true);
+        if (entry.isIntersecting) {
+          setVisible(true);
+        }
       },
       { threshold },
     );
-    if (ref.current) obs.observe(ref.current);
+
+    obs.observe(ref.current);
+
     return () => obs.disconnect();
-  }, [threshold]);
+  }, [threshold, ref]);
 
   return visible;
 }

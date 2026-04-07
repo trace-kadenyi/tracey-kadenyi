@@ -66,7 +66,18 @@ function ProjectScene({
       {/* Giant background number */}
       <div
         className={`
-    absolute top-1/2 -translate-y-1/2 font-display font-black leading-none select-none pointer-events-none tracking-[-0.05em]
+    absolute 
+
+    /* Mobile: top-right */
+    top-10 right-4 left-auto translate-y-0
+
+    /* Desktop: alternate sides + centered */
+    lg:top-1/2 lg:-translate-y-1/2
+    ${isEven ? "lg:left-[-1%] lg:right-auto" : "lg:right-[-1%] lg:left-auto"}
+
+    font-display font-black leading-none 
+    select-none pointer-events-none tracking-[-0.05em]
+
     ${
       isEven
         ? "text-[rgba(255,59,63,0.05)]"
@@ -74,14 +85,11 @@ function ProjectScene({
     }
   `}
         style={{
-          left: isEven ? "-1%" : "auto",
-          right: isEven ? "auto" : "-1%",
           fontSize: "clamp(14rem, 25vw, 26rem)",
         }}
       >
         0{index + 1}
       </div>
-
       {/* Mouse glow */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -92,12 +100,11 @@ function ProjectScene({
       />
 
       {/* Grid */}
-      <div className="relative z-10 w-full max-w-[1200px] mx-auto grid grid-cols-2 gap-[72px] items-center">
+      <div className="relative z-10 w-full max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-[72px] items-center">
         {/* Text */}
         <div
-          className="flex flex-col"
+          className={`flex flex-col ${isEven ? "lg:order-1" : "lg:order-2"} order-1`}
           style={{
-            order: isEven ? 1 : 2,
             opacity: visible ? 1 : 0,
             transform: visible
               ? "translateY(0) scale(1)"
@@ -204,10 +211,10 @@ function ProjectScene({
         </div>
 
         {/* Slideshow card */}
+
         <div
-          className="perspective-[1000px]"
+          className={`perspective-[1000px] ${isEven ? "lg:order-2" : "lg:order-1"} order-2`}
           style={{
-            order: isEven ? 2 : 1,
             opacity: visible ? 1 : 0,
             transform: visible
               ? "translateY(0) scale(1)"

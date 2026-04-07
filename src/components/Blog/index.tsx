@@ -5,18 +5,39 @@ import type { Post } from "@/types";
 import { useVisible } from "@/hooks/useVisible";
 import FeaturedPost from "./FeaturedPost";
 import BlogPostCard from "./BlogPostCard";
+import { getCachedPosts, setCachedPosts } from "@/lib/blogCache";
 
 export default function Blog() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
+  const [ready, setReady] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
   const visible = useVisible(sectionRef);
 
   useEffect(() => {
+    if (!loading) {
+      const t = setTimeout(() => setReady(true), 120);
+      return () => clearTimeout(t);
+    }
+  }, [loading]);
+
+  useEffect(() => {
+    const cached = getCachedPosts();
+
+    if (cached !== null) {
+      setPosts(cached);
+      setLoading(false);
+      return;
+    }
+
     fetch("/api/blog")
       .then((r) => r.json())
       .then((data) => {
-        if (data.items) setPosts(data.items.slice(0, 3));
+        if (data.items) {
+          const sliced = data.items.slice(0, 3);
+          setCachedPosts(sliced);
+          setPosts(sliced);
+        }
         setLoading(false);
       })
       .catch(() => setLoading(false));
@@ -79,13 +100,13 @@ export default function Blog() {
             </div>
           )}
 
-          {!loading && posts.length > 0 && (
+          {ready && posts.length > 0 && (
             <div className="flex flex-col gap-6">
               {/* Featured post */}
               {featured && <FeaturedPost post={featured} visible={visible} />}
 
               {/* Smaller posts */}
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {rest.map((post, i) => (
                   <BlogPostCard
                     key={post.link}
