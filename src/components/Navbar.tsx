@@ -38,8 +38,8 @@ export default function Navbar() {
     // Flag that we're doing programmatic scrolling
     // startScrolling();
 
-    const navHeight = 64;
-    const top = target.getBoundingClientRect().top + window.scrollY - navHeight;
+    // const navHeight = 64;
+    const top = target.getBoundingClientRect().top + window.scrollY;
     const heavySections = ["contact"];
 
     const behavior = heavySections.includes(id) ? "auto" : "smooth";
