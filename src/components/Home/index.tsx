@@ -64,7 +64,7 @@ export default function Hero() {
                 .getElementById("projects")
                 ?.scrollIntoView({ behavior: "smooth" })
             }
-            className="px-7 py-3 bg-[#ff3b3f] hover:bg-[#e02e32] text-white font-display font-bold text-sm tracking-[0.04em] rounded-lg border-none cursor-pointer transition-colors duration-200"
+            className="px-7 py-3 bg-[#cc2f32] dark:bg-[#ff3b3f] hover:bg-[#e02e32] text-white font-display font-bold text-sm tracking-[0.04em] rounded-lg border-none cursor-pointer transition-colors duration-200"
           >
             View my work
           </button>
