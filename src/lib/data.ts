@@ -22,7 +22,7 @@ export const projects = [
       "Tailwind",
       "Supabase",
     ],
-    liveUrl: "https://planit.traceykadenyi.com/",
+    liveUrl: "https://planit.traceykadenyi.com",
     sourceUrl: "https://github.com/trace-kadenyi/PlaniT",
     images: [
       "/screenshots/planit/dashboard-dark.png",
@@ -58,7 +58,7 @@ export const projects = [
       "AI",
       "OAuth",
     ],
-    liveUrl: "https://metri-q.vercel.app/",
+    liveUrl: "https://metriq.traceykadenyi.com",
     sourceUrl: "https://github.com/trace-kadenyi/MetriQ",
     images: [
       "/screenshots/metriq/landingD.png",
