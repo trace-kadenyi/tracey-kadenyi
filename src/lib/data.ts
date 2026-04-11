@@ -75,7 +75,7 @@ export const minorProjects = [
     id: 1,
     title: "Imagine - Tell Me a Story",
     description:
-      "Full-stack story publishing platform: users create accounts, publish original stories, and read published works by others.",
+      "A full-stack story publishing platform where users can create accounts, publish original stories, and read content from other writers.",
     tags: ["React", "Node.js", "MongoDB", "Express"],
     liveUrl: "https://imagine-tellmeastory.vercel.app/",
     sourceUrl: "https://github.com/trace-kadenyi/storybrooke-frontend",
