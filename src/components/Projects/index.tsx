@@ -6,6 +6,7 @@ import { ExternalLink, Code2 } from "lucide-react";
 import { projects } from "@/lib/data";
 import ImageSlideshow from "./ImageSlideshow";
 import ProjectsHeader from "./ProjectsHeader";
+import MinorProjects from "./MinorProjects";
 
 function ProjectScene({
   project,
@@ -250,6 +251,7 @@ export default function Projects() {
       {projects.map((project, index) => (
         <ProjectScene key={project.id} project={project} index={index} />
       ))}
+      <MinorProjects />
     </section>
   );
 }
