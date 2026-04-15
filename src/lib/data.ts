@@ -6,12 +6,12 @@ export const projects = [
     title: "PlaniT",
     tagline: "B2B SaaS · Event Management Platform",
     description:
-      "A multi-tenant SaaS platform for organizations to manage events, vendors, budgets, and teams — with real-time financial tracking, expense audit logs, and role-based access control built in.",
+      "A multi-tenant SaaS platform built for event organizations to manage their entire operation — from vendor sourcing and team coordination to budget tracking and client management — all under one role-aware interface.",
     highlights: [
-      "Multi-tenant architecture with secure org-level data isolation",
-      "JWT auth with silent token renewal via Axios interceptors",
-      "Role-based UI — components render conditionally per user role",
-      "Live budget tracking with over-budget alerts and full audit logs",
+      "Multi-tenant architecture with org-level data isolation — each organization's data is fully scoped and never bleeds across tenants",
+      "JWT access tokens stored in memory with silent renewal via Axios interceptors on 401 — no token exposure in localStorage",
+      "Granular RBAC system — UI components, routes, and API actions all gate conditionally on the authenticated user's role",
+      "Live financial engine with running budget totals, over-budget alerts, receipt storage via Supabase, and a full expense audit log with user attribution",
     ],
     tags: [
       "React",
@@ -42,12 +42,12 @@ export const projects = [
     title: "MetriQ",
     tagline: "Web Performance Analysis Platform",
     description:
-      "A performance analysis tool that audits any URL via Google PageSpeed Insights, generates AI-powered summaries, enables competitor comparison, and exports detailed PDF reports.",
+      "A developer tool that audits any public URL against Google PageSpeed Insights, generates AI-powered fix summaries, and lets you benchmark your site against competitors — all exportable as a PDF report.",
     highlights: [
-      "Google PageSpeed Insights integration — mobile & desktop audits",
-      "AI-generated performance summaries via OpenRouter + DeepSeek",
-      "Side-by-side competitor comparison with visual Recharts graphs",
-      "OAuth login via Google/GitHub, PDF export, dark/light mode",
+      "Google PageSpeed Insights integration for both mobile and desktop — surfaces Core Web Vitals, accessibility scores, and SEO signals",
+      "AI-generated audit summaries via OpenRouter + DeepSeek — translates raw Lighthouse data into plain-English action points",
+      "Side-by-side competitor comparison with Recharts visualizations — benchmark multiple URLs in a single view",
+      "OAuth via Google and GitHub, persistent report history, PDF export, and full dark/light mode support",
     ],
     tags: [
       "React",
