@@ -251,7 +251,7 @@ export default function Projects() {
       {projects.map((project, index) => (
         <ProjectScene key={project.id} project={project} index={index} />
       ))}
-      <MinorProjects />
+      {/* <MinorProjects /> */}
     </section>
   );
 }
