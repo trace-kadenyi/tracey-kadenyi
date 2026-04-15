@@ -139,7 +139,7 @@ function ProjectScene({
 
           {/* Description */}
           <p
-            className={`font-sans text-[0.95rem] leading-[1.75] mb-6 max-w-[400px] 
+            className={`font-sans text-[0.95rem] leading-[1.75] mb-6 max-w-[450px] 
             ${isEven ? "text-white/55" : "text-[#4a5568] dark:text-white/65"}
   `}
           >
