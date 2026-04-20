@@ -207,5 +207,5 @@ export const meta = {
   resumeUrl:
     "https://docs.google.com/document/d/1bzoeJz-HpSqfjInOUQuz1AT2de0feeBd_JN4oA8CPNM/edit?usp=sharing",
   mediumUrl: "https://medium.com/@tracekadenyi",
-  bio: "JavaScript/TypeScript dev with 4+ years building SaaS platforms and scalable web apps | Strong expertise in multi-tenant architecture, Role-Based Access Control (RBAC), and RESTful API design.",
+  bio: "JavaScript/TypeScript dev with 3+ years building SaaS platforms and scalable web apps | Strong expertise in multi-tenant architecture, Role-Based Access Control (RBAC), and RESTful API design.",
 };

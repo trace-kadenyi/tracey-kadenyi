@@ -33,7 +33,7 @@ export default function About() {
   }, []);
 
   const stats = [
-    { value: "4+", label: "Years of experience" },
+    { value: "3+", label: "Years of experience" },
     { value: "5K+", label: "GitHub contributions in the last year" },
     { value: "3", label: "Products in production" },
   ];
