@@ -104,7 +104,12 @@ export const skillGroups = [
       "React",
       "Next.js",
       "Redux",
+      "Zustand",
       "Tailwind CSS",
+      "shadcn/ui",
+      "TanStack Table",
+      "React Hook Form",
+      "Zod",
       "Framer Motion",
       "Three.js",
     ],
@@ -126,10 +131,10 @@ export const skillGroups = [
 export const featuredSkills = [
   { name: "JavaScript", short: "JS", level: 98 },
   { name: "React", short: "React", level: 92 },
+  { name: "Next.js", short: "Next", level: 90 },
   { name: "Node.js / Express", short: "Node", level: 90 },
-  { name: "MongoDB", short: "MongoDB", level: 85 },
-  { name: "TypeScript", short: "TS", level: 74 },
-  { name: "Next.js", short: "Next", level: 62 },
+  { name: "TypeScript", short: "TS", level: 88 },
+  { name: "MongoDB / PostgreSQL", short: "DBs", level: 85 },
 ];
 // ─── TESTIMONIALS ──────────────────────────────────────────────────────────
 
@@ -178,6 +183,11 @@ export const socials = [
     label: "GitHub",
     url: "https://github.com/trace-kadenyi",
     handle: "@trace-kadenyi",
+  },
+  {
+    label: "GitHub (Work)",
+    url: "https://github.com/tracey-kadenyi-isocel",
+    handle: "@tracey-kadenyi-isocel",
   },
   {
     label: "LinkedIn",
