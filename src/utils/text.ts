@@ -16,8 +16,20 @@ export function formatDate(dateStr: string) {
 }
 
 // strip html helper func
-export function stripHtml(html: string) {
-  return html.replace(/<[^>]*>/g, "").slice(0, 140) + "...";
+// strip html helper func
+export function stripHtml(html: string, maxLength: number = 140) {
+  const text = html
+    .replace(/<[^>]*>/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+  if (text.length <= maxLength) return text;
+
+  const cut = text.slice(0, maxLength);
+  const lastSpace = cut.lastIndexOf(" ");
+  return (
+    (lastSpace > maxLength * 0.6 ? cut.slice(0, lastSpace) : cut).trimEnd() +
+    "..."
+  );
 }
 
 // getthumbnail helper func
