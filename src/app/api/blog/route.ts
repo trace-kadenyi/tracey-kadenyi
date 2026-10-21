@@ -2,6 +2,7 @@ import type { Post } from "@/types";
 
 const FEED = "https://medium.com/feed/@tracekadenyi";
 const UA = "Mozilla/5.0 (compatible; PortfolioFeedFetcher/1.0)";
+const TIMEOUT_MS = 5000;
 
 function tag(xml: string, name: string): string {
   const m = xml.match(new RegExp(`<${name}[^>]*>([\\s\\S]*?)</${name}>`));
@@ -13,14 +14,14 @@ async function fromMedium(): Promise<Post[]> {
   const res = await fetch(FEED, {
     cache: "no-store",
     headers: { "User-Agent": UA },
-    signal: AbortSignal.timeout(8000),
+    signal: AbortSignal.timeout(TIMEOUT_MS),
   });
   if (!res.ok) throw new Error(`Medium responded ${res.status}`);
 
   const xml = await res.text();
   const items = xml.match(/<item>[\s\S]*?<\/item>/g) ?? [];
 
-  return items.slice(0, 5).map((item) => {
+  return items.slice(0, 1).map((item) => {
     const content = tag(item, "content:encoded");
     return {
       title: tag(item, "title"),
@@ -36,7 +37,7 @@ async function fromMedium(): Promise<Post[]> {
 async function fromRss2Json(): Promise<Post[]> {
   const res = await fetch(
     `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(FEED)}`,
-    { cache: "no-store", signal: AbortSignal.timeout(8000) },
+    { cache: "no-store", signal: AbortSignal.timeout(TIMEOUT_MS) },
   );
   const data = await res.json();
   if (data.status !== "ok" || !Array.isArray(data.items)) {
@@ -48,12 +49,17 @@ async function fromRss2Json(): Promise<Post[]> {
 export async function GET() {
   const errors: string[] = [];
 
-  for (const source of [fromMedium, fromRss2Json]) {
+  const sources: [string, () => Promise<Post[]>][] = [
+    ["medium-direct", fromMedium],
+    ["rss2json", fromRss2Json],
+  ];
+
+  for (const [name, load] of sources) {
     try {
-      const items = await source();
+      const items = await load();
       if (items.length > 0) {
         return Response.json(
-          { items, source: source.name },
+          { items, source: name },
           {
             headers: {
               "Cache-Control": "s-maxage=3600, stale-while-revalidate=86400",
@@ -61,14 +67,17 @@ export async function GET() {
           },
         );
       }
-      errors.push(`${source.name}: returned no items`);
+      errors.push(`${name}: returned no items`);
     } catch (err) {
       const message = err instanceof Error ? err.message : String(err);
-      console.error(`[api/blog] ${source.name} failed:`, err);
-      errors.push(`${source.name}: ${message}`);
+      console.error(`[api/blog] ${name} failed:`, err);
+      errors.push(`${name}: ${message}`);
     }
   }
 
-  // Temporary debug output; remove once the feed is stable
-  return Response.json({ items: [], errors }, { status: 502 });
+  // Kept while you observe; remove `errors` once the feed has proven stable.
+  return Response.json(
+    { items: [], errors },
+    { status: 502, headers: { "Cache-Control": "no-store" } },
+  );
 }
