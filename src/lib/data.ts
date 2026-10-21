@@ -219,3 +219,36 @@ export const meta = {
   mediumUrl: "https://medium.com/@tracekadenyi",
   bio: "JavaScript/TypeScript dev with 3+ years building SaaS platforms and scalable web apps | Strong expertise in multi-tenant architecture, Role-Based Access Control (RBAC), and RESTful API design.",
 };
+
+// ─── TOP ARTICLES ──────────────────────────────────────────────────────────
+
+export const topArticles = [
+  {
+    title: "Frontend-Only Security Is an Illusion",
+    href: "https://medium.com/@tracekadenyi/frontend-only-security-is-an-illusion-2289a52e24f6",
+    topic: "Security · Frontend",
+    blurb:
+      "If a feature is only hidden in the UI, it isn't secure. Why real protection has to be enforced on the server.",
+    image:
+      "https://miro.medium.com/v2/resize:fit:1358/format:webp/1*T5c5kn0R_wUIhnanANfVAw.png",
+  },
+  {
+    title: "Rethinking How to Learn Cybersecurity in the Age of AI",
+    href: "https://medium.com/@tracekadenyi/rethinking-how-to-learn-cybersecurity-in-the-age-of-ai-d6784975b9cc",
+    topic: "Security · AI",
+    blurb:
+      "AI has changed both sides of security. Why learning it the traditional way now feels incomplete, and a more realistic entry point for developers.",
+    image:
+      "https://miro.medium.com/v2/resize:fit:1200/1*yBPQ_Sh8aBmQ1NeGMCZ4tQ.png",
+  },
+
+  {
+    title: "Prisma Docker Error: libssl.so.1.1 Not Found on Alpine",
+    href: "https://medium.com/@tracekadenyi/prisma-docker-error-libssl-so-1-1-not-found-on-alpine-b8eb25e179cd",
+    topic: "Docker · Prisma",
+    blurb:
+      "The build succeeds, the logs scroll, and then Prisma fails with libssl.so.1.1 not found on Alpine.",
+    image:
+      "https://miro.medium.com/v2/resize:fit:1358/format:webp/1*mvpfw8m8F7p_M2pRpoomLA.png",
+  },
+];

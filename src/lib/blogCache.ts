@@ -7,5 +7,6 @@ export function getCachedPosts() {
 }
 
 export function setCachedPosts(posts: Post[]) {
-  cachedPosts = posts;
+  // Never cache an empty result, or one failure sticks for the whole visit.
+  if (posts.length > 0) cachedPosts = posts;
 }

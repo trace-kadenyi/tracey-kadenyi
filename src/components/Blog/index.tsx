@@ -4,11 +4,12 @@ import { useEffect, useState, useRef } from "react";
 import type { Post } from "@/types";
 import { useVisible } from "@/hooks/useVisible";
 import FeaturedPost from "./FeaturedPost";
-import BlogPostCard from "./BlogPostCard";
+import TopReads from "./TopReads";
 import { getCachedPosts, setCachedPosts } from "@/lib/blogCache";
+import SubHeading from "./SubHeading";
 
 export default function Blog() {
-  const [posts, setPosts] = useState<Post[]>([]);
+  const [latest, setLatest] = useState<Post | null>(null);
   const [loading, setLoading] = useState(true);
   const [ready, setReady] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -23,31 +24,49 @@ export default function Blog() {
 
   useEffect(() => {
     const cached = getCachedPosts();
-
-    if (cached !== null) {
-      setPosts(cached);
+    if (cached && cached.length > 0) {
+      setLatest(cached[0]);
       setLoading(false);
       return;
     }
 
-    fetch("/api/blog")
-      .then((r) => r.json())
-      .then((data) => {
-        if (data.items) {
-          const sliced = data.items.slice(0, 3);
-          setCachedPosts(sliced);
-          setPosts(sliced);
-        }
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
-  }, []);
+    let cancelled = false;
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 11000);
 
-  const [featured, ...rest] = posts;
+    fetch("/api/blog", { signal: controller.signal })
+      .then((r) => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
+      })
+      .then((data) => {
+        if (cancelled) return;
+        const first: Post | undefined = Array.isArray(data.items)
+          ? data.items[0]
+          : undefined;
+        if (first?.link) {
+          setCachedPosts([first]);
+          setLatest(first);
+        }
+      })
+      .catch(() => {
+        // Silent on purpose: "Top reads" covers the empty state.
+      })
+      .finally(() => {
+        clearTimeout(timeout);
+        if (!cancelled) setLoading(false);
+      });
+
+    return () => {
+      cancelled = true;
+      clearTimeout(timeout);
+      controller.abort();
+    };
+  }, []);
 
   return (
     <section id="blog" ref={sectionRef}>
-      <div className="px-[8%] py-24 relative overflow-hidden min-h-[600px] bg-[#f9f9f7] dark:bg-gradient-to-b dark:from-[#0f1626] dark:via-[#0f1626] dark:to-[#0f131a]">
+      <div className="px-[8%] py-20 relative overflow-hidden min-h-[420px] bg-[#f9f9f7] dark:bg-gradient-to-b dark:from-[#0f1626] dark:via-[#0f1626] dark:to-[#0f131a]">
         {/* Background word */}
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-display font-black whitespace-nowrap select-none pointer-events-none tracking-[-0.04em] text-[rgba(15,22,38,0.025)] dark:text-[rgba(255,255,255,0.02)]/70"
@@ -73,7 +92,7 @@ export default function Blog() {
 
           {/* Heading */}
           <h2
-            className="font-display font-black text-[#0f1626] dark:text-gray-300 leading-none tracking-[-0.03em] mb-16"
+            className="font-display font-black text-[#0f1626] dark:text-gray-300 leading-none tracking-[-0.03em] mb-12"
             style={{
               fontSize: "clamp(2.5rem, 5vw, 4.5rem)",
               opacity: visible ? 1 : 0,
@@ -100,44 +119,38 @@ export default function Blog() {
             </div>
           )}
 
-          {ready && posts.length > 0 && (
-            <div className="flex flex-col gap-6">
-              {/* Featured post */}
-              {featured && <FeaturedPost post={featured} visible={visible} />}
+          {ready && (
+            <>
+              {/* Latest post (only when the feed worked) */}
+              {latest && (
+                <div>
+                  <SubHeading visible={visible}>Latest</SubHeading>
+                  <FeaturedPost post={latest} visible={visible} />
+                </div>
+              )}
 
-              {/* Smaller posts */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {rest.map((post, i) => (
-                  <BlogPostCard
-                    key={post.link}
-                    post={post}
-                    index={i}
-                    visible={visible}
-                  />
-                ))}
-              </div>
-            </div>
-          )}
+              {/* Always shown, independent of the feed */}
+              <TopReads visible={visible} spaced={!!latest} />
 
-          {/* View all link */}
-          {!loading && (
-            <div
-              className="mt-12 flex items-center gap-3"
-              style={{
-                opacity: visible ? 1 : 0,
-                transition: "opacity 0.8s ease 0.6s",
-              }}
-            >
-              <span className="block w-6 h-px bg-[rgba(15,22,38,0.15)]" />
-              <a
-                href="https://medium.com/@tracekadenyi"
-                target="_blank"
-                rel="noreferrer"
-                className="font-mono text-[#4a5568] dark:text-gray-400 hover:text-[#ff3b3f] text-xs tracking-[0.12em] uppercase no-underline transition-colors duration-200 cursor-default"
+              {/* View all link */}
+              <div
+                className="mt-10 flex items-center gap-3"
+                style={{
+                  opacity: visible ? 1 : 0,
+                  transition: "opacity 0.8s ease 0.6s",
+                }}
               >
-                All articles →
-              </a>
-            </div>
+                <span className="block w-6 h-px bg-[rgba(15,22,38,0.15)]" />
+                <a
+                  href="https://medium.com/@tracekadenyi"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="font-mono text-[#4a5568] dark:text-gray-400 hover:text-[#ff3b3f] text-xs tracking-[0.12em] uppercase no-underline transition-colors duration-200 cursor-default"
+                >
+                  All articles →
+                </a>
+              </div>
+            </>
           )}
         </div>
       </div>
