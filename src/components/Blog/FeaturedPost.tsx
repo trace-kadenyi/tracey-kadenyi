@@ -12,7 +12,7 @@ export default function FeaturedPost({ post, visible }: FeaturedPostProps) {
       href={post.link}
       target="_blank"
       rel="noreferrer"
-      className="group no-underline cursor-default"
+      className="group no-underline cursor-default0"
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0)" : "translateY(30px)",
@@ -20,13 +20,13 @@ export default function FeaturedPost({ post, visible }: FeaturedPostProps) {
       }}
     >
       <div
-        className="grid grid-cols-1 md:grid-cols-2 gap-0 rounded-2xl overflow-hidden border border-[rgba(15,22,38,0.08)] group-hover:border-[rgba(255,59,63,0.3)] transition-all duration-300"
+        className="grid grid-cols-1 md:grid-cols-2 gap-0 rounded-2xl overflow-hidden border border-[rgba(15,22,38,0.08)] group-hover:border-[rgba(255,59,63,0.3)] transition-all duration-300 my-10"
         style={{ boxShadow: "0 4px 24px rgba(15,22,38,0.06)" }}
       >
         {/* Image */}
         <div
           className="relative bg-[#0f1626]"
-          style={{ height: "280px", flexShrink: 0 }}
+          style={{ height: "350px", flexShrink: 0 }}
         >
           <div className="absolute inset-0 overflow-hidden">
             {getThumbnail(post) ? (
@@ -60,7 +60,7 @@ export default function FeaturedPost({ post, visible }: FeaturedPostProps) {
               {truncateTitle(post.title, 85)}
             </h3>
             <p className="font-sans text-[#4a5568] dark:text-gray-400 text-sm leading-relaxed">
-              {stripHtml(post.description)}
+              {stripHtml(post.description, 200)}
             </p>
           </div>
           <div className="flex items-center gap-2 mt-6">
