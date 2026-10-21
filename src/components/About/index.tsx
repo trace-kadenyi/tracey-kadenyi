@@ -167,7 +167,7 @@ export default function About() {
           </div>
 
           {/* Skill tags by group */}
-          <div className="space-y-6">
+          <div className="space-y-6  max-w-[900px]">
             {skillGroups.map((group, gi) => (
               <div
                 key={group.label}
